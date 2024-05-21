@@ -54,7 +54,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-我的第一篇博客"
+  id="post-集合"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -73,7 +73,7 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2024/05/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="article-date">
+      <a href="/2024/05/17/%E9%9B%86%E5%90%88/" class="article-date">
   <time datetime="2024-05-17T12:36:01.000Z" itemprop="datePublished">2024-05-17</time>
 </a>   
 <div class="word_count">
@@ -81,7 +81,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">195</span>
+            <span class="post-count">956</span>
         </span>
     </span>
 
@@ -90,7 +90,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">3 分钟</span>
         </span>
     </span>
 </div>
@@ -105,11 +105,100 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p><a href="%E7%9B%AE%E5%BD%95">TOC</a></p>
-<h1 id="搭建历程"><a href="#搭建历程" class="headerlink" title="搭建历程"></a>搭建历程</h1><p>(历时整整两天~ _ ~)</p>
-<h2 id="博客展示"><a href="#博客展示" class="headerlink" title="博客展示"></a>博客展示</h2><p>本人博客展示<a target="_blank" rel="noopener" href="https://yinyyingdestar.github.io/">无常学java</a><br>十分粗糙,任待完善</p>
-<h2 id="博客简介"><a href="#博客简介" class="headerlink" title="博客简介"></a>博客简介</h2><h3 id="运用技术简介"><a href="#运用技术简介" class="headerlink" title="运用技术简介"></a>运用技术简介</h3><p>该博客为静态博客,基于Hexo框架搭建,博主为大学牲没有米,所以将它部署在Github Pages,然后为了能同大家交流方便,我会在CSDN上同步发布,该博客搭建借鉴于<a target="_blank" rel="noopener" href="http://t.csdnimg.cn/u459k">从零开tong始免费搭建自己的博客</a></p>
-<h3 id="写blog动机"><a href="#写blog动机" class="headerlink" title="写blog动机"></a>写blog动机</h3><p>感觉能在自己学习编程得过程中留下一些足迹很有意义,还能记录顺便监督自己的编程学习.同时,还能同大家分享踩过的一些坑,总之很期待,一起加油吧!<br>(本人目前学习java)</p>
+  <h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><p>体系图一览</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/IMG_20240520_230540.jpg" alt="IMG_20240520_230540"></p>
+<h2 id="集合相对于数组的优点"><a href="#集合相对于数组的优点" class="headerlink" title="集合相对于数组的优点"></a>集合相对于数组的优点</h2><p><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/IMG_20240520_230509.jpg" alt="IMG_20240520_230509"></p>
+<p>实际开发根据业务逻辑选择</p>
+<ol>
+<li>一组对象(单列)</li>
+<li>一组键值对(双列)</li>
+</ol>
+<h2 id="Collection接口"><a href="#Collection接口" class="headerlink" title="Collection接口"></a>Collection接口</h2><h3 id="List-允许重复"><a href="#List-允许重复" class="headerlink" title="List: 允许重复"></a>List: 允许重复</h3><h4 id="LinkList-ArrayList-Vector"><a href="#LinkList-ArrayList-Vector" class="headerlink" title="LinkList&#x2F;ArrayList&#x2F;Vector"></a>LinkList&#x2F;ArrayList&#x2F;Vector</h4><ol>
+<li>增删多:用 LinkList (底层维护了一个双向链表), 通过改变pre和next指向即可实现Node的增删;</li>
+<li>改查多:用ArrayList&#x2F;Vector(底层结构是可变数组), 进一步选择</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-05-21%20094107.png" alt="屏幕截图 2024-05-21 094107"></p>
+<h3 id="Set-不允许重复"><a href="#Set-不允许重复" class="headerlink" title="Set: 不允许重复"></a>Set: 不允许重复</h3><h4 id="1-HashSet"><a href="#1-HashSet" class="headerlink" title="1. HashSet"></a>1. HashSet</h4><ol>
+<li>无序: HashSet[底层是HashMap,维护了一个哈希表(数组+链表+红黑树)]<br> 添加元素步骤:<ol>
+<li>先得到hash值转换成索引值,找到对应储存位置</li>
+<li>没有元素直接加入, 有则调用equals比较</li>
+<li>hashcode()+equals()均可被重写, 由程序猿自己制定比较规则</li>
+<li>扩容机制:<br>  <img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-05-21%20095626.png" alt="屏幕截图 2024-05-21 095626"></li>
+</ol>
+</li>
+</ol>
+<h4 id="2-TreeSet"><a href="#2-TreeSet" class="headerlink" title="2.TreeSet"></a>2.TreeSet</h4><ol start="2">
+<li><p>排序: TreeSet</p>
+<ol>
+<li>底层为MapSet(key即为穿入的对象, value是PRESENRT占位符)        </li>
+<li>创建TreeSet时, 使用无参构造器则使用默认的Comparator, 亦可重写比较器, 制定比较规则</li>
+</ol>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">TreeSet</span> <span class="variable">treeSet</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeSet</span>();</span><br><span class="line"><span class="type">TreeSet</span> <span class="variable">treeSet</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeSet</span>(<span class="keyword">new</span> <span class="title class_">Comparator</span>() &#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Object o1, Object o2)</span> &#123;</span><br><span class="line"><span class="comment">//下面 调用 String 的 compareTo 方法进行字符串大小比较</span></span><br><span class="line"><span class="comment">//如果要求加入的元素，按照长度大小排序</span></span><br><span class="line"><span class="comment">//return ((String) o2).compareTo((String) o1);</span></span><br><span class="line"><span class="keyword">return</span> ((String) o1).length() - ((String) o2).length();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="3-LinkedHashSet"><a href="#3-LinkedHashSet" class="headerlink" title="3. LinkedHashSet"></a>3. LinkedHashSet</h4><ol start="3">
+<li><p>插入和取出顺序一致: LinkedHashSet(维护了一个(数组[存放]+双向链表[维持顺序]))</p>
+<h5 id="去重机制比较"><a href="#去重机制比较" class="headerlink" title="去重机制比较"></a>去重机制比较</h5><ol>
+<li>HashSet：hashcode()得到hash值从而得到索引,  用equals()便利比较</li>
+<li>用Comparator实现的compare方法比较, 该方法返回正数,0, 负数, 为0表示重复, 不添加</li>
+</ol>
+</li>
+</ol>
+<h2 id="Map接口"><a href="#Map接口" class="headerlink" title="Map接口"></a>Map接口</h2><h3 id="1-HashMap"><a href="#1-HashMap" class="headerlink" title="1.HashMap"></a>1.HashMap</h3><ol>
+<li><p>键无序: HashMap</p>
+<ol>
+<li><p>底层是:哈希表(JDK7: 数组+链表)(hJDK8: 数组+链表+红黑树)</p>
+</li>
+<li><p>扩容机制: </p>
+<ol>
+<li><p>第1次添加，则需要扩容tabl容量为16，临界值(threshold)为12(16*0.75)</p>
+</li>
+<li><p>以后再扩容，则需要扩容tab1e容量为原来的2倍（32)，临界值为原来的2倍,即24</p>
+</li>
+</ol>
+<p>   以次类推.</p>
+<ol start="3">
+<li>在Java8中，如果一条链表的元素个数超过TREEIFY THRESHOLD（默认是8），并且table的大小&gt;&#x3D; MIN_TREEIFY_CAPACITY（默认64)，就会进行树化（红黑树)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="2-TreeMap"><a href="#2-TreeMap" class="headerlink" title="2.TreeMap"></a>2.TreeMap</h4><ol start="2">
+<li>键排序: TreeMap(定制排序, 原理见TreeSet)</li>
+</ol>
+<h4 id="3-LinkedhashMap"><a href="#3-LinkedhashMap" class="headerlink" title="3.LinkedhashMap"></a>3.LinkedhashMap</h4><ol start="3">
+<li>键插入和取出的顺序一致:LinkedhashMap(原理见LinkedhashSet)</li>
+</ol>
+<h4 id="4-Properties"><a href="#4-Properties" class="headerlink" title="4.Properties"></a>4.Properties</h4><ol start="4">
+<li><p>读取文件: Properties</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-05-21%20175747.png" alt="屏幕截图 2024-05-21 175747"></p>
+</li>
+</ol>
+<h3 id="遍历方法"><a href="#遍历方法" class="headerlink" title="遍历方法"></a>遍历方法</h3><ol>
+<li>先取出 所有的 Key , 通过 Key 取出对应的 Value, 再进行遍历<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Set</span> <span class="variable">keyset</span> <span class="operator">=</span> map.keySet();</span><br></pre></td></tr></table></figure></li>
+<li>把所有的 values 取出, 这里可以使用所有的 Collections 使用的遍历方法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Collection</span> <span class="variable">values</span> <span class="operator">=</span> map.values();</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>通过 EntrySet 来获取 k-v(以增强for循环为例)<br> 原理: Map里面的Node(Node实现了Map.Entry&lt;K, V&gt;)转换成Entry, 再放到EntrySet里面去,<br> 然而Map.Entry提供了方法getKey()和getValue()<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Set</span> <span class="variable">entrySet</span> <span class="operator">=</span> map.entrySet();<span class="comment">// EntrySet&lt;Map.Entry&lt;K,V&gt;&gt;</span></span><br><span class="line"><span class="comment">//(1) 增强 for</span></span><br><span class="line">System.out.println(<span class="string">&quot;----使用 EntrySet 的 for 增强(第 3 种)----&quot;</span>);</span><br><span class="line"><span class="keyword">for</span> (Object entry : entrySet) &#123;</span><br><span class="line"><span class="comment">//将 entry 转成 Map.Entry</span></span><br><span class="line">Map.<span class="type">Entry</span> <span class="variable">m</span> <span class="operator">=</span> (Map.Entry) entry;</span><br><span class="line">System.out.println(m.getKey() + <span class="string">&quot;-&quot;</span> + m.getValue());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="Collections工具类"><a href="#Collections工具类" class="headerlink" title="Collections工具类"></a>Collections工具类</h2><ol>
+<li><p>Collections是一个操作Set, List, Map等集合的工具类</p>
+</li>
+<li><p>提供了一系列<strong>静态的</strong>方法对集合元素进行排序, 查询等</p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-05-21%20181744.png" alt="屏幕截图 2024-05-21 181744"><br>   <img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-05-21%20181800.png" alt="屏幕截图 2024-05-21 181800"></p>
+<h2 id="练习题踩坑"><a href="#练习题踩坑" class="headerlink" title="练习题踩坑"></a>练习题踩坑</h2><p>(结果输出4个对象)</p>
+<ol>
+<li>hashcode()+equals()均被重写, 因此只用根据id 和name判断</li>
+<li>p1.name更改后(p1为引用数据类型, 因此set中的p1也会发生改变), 在经hashcode()计算后,在数组中位置发生变化(假设变到索引为3的位置), 因此无法删除p1</li>
+<li>set.add(new Person(“1001”, “CC”)), 经过hashcode()计算后在索引为3的位置, 自然而然可以加入</li>
+<li>set.add(new Person(“1001”, “AA”)),经过计算后在索引为1的位置,与修改后的p1不相同, 因而任可以加入<br><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-05-21%20181640.png" alt="屏幕截图 2024-05-21 181640"></li>
+</ol>
+<blockquote>
+<p>本文截图均来自于<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1fh411y7R8/?spm_id_from=333.999.0.0&vd_source=3f176702ea98369f18fc10e9013aa770">【零基础 快速学Java】韩顺平 零基础30天学会Java</a></p>
+</blockquote>
  
       <!-- reward -->
       
@@ -180,12 +269,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/05/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/05/17/%E9%9B%86%E5%90%88/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6java-%E5%9F%BA%E7%A1%80/" rel="tag">学java(基础)</a></li></ul>
 
     </footer>
   </div>
@@ -193,11 +282,15 @@
    
   <nav class="article-nav">
     
-    
-      <a href="/2024/05/17/%E9%9B%86%E5%90%88/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">我的第一篇博客</div>
+      <a href="/2024/05/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            我的第一篇博客
+          
+        </div>
       </a>
+    
     
   </nav>
 

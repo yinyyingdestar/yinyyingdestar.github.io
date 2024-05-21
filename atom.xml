@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>添砖java</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2024-05-18T16:03:40.209Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>无常学java</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我的第一篇博客</title>
+    <link href="http://example.com/2024/05/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://example.com/2024/05/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
+    <published>2024-05-17T12:36:01.000Z</published>
+    <updated>2024-05-18T16:03:40.209Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;%E7%9B%AE%E5%BD%95&quot;&gt;TOC&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;搭建历程&quot;&gt;&lt;a href=&quot;#搭建历程&quot; class=&quot;headerlink&quot; title=&quot;搭建历程&quot;&gt;&lt;/a&gt;搭建历程&lt;/h1&gt;&lt;p&gt;(历时整整两天~ _</summary>
+        
+      
+    
+    
+    
+    
+    <category term="博客搭建" scheme="http://example.com/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的第一篇博客</title>
+    <link href="http://example.com/2024/05/17/%E9%9B%86%E5%90%88/"/>
+    <id>http://example.com/2024/05/17/%E9%9B%86%E5%90%88/</id>
+    <published>2024-05-17T12:36:01.000Z</published>
+    <updated>2024-05-21T10:40:20.017Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;集合&quot;&gt;&lt;a href=&quot;#集合&quot; class=&quot;headerlink&quot; title=&quot;集合&quot;&gt;&lt;/a&gt;集合&lt;/h1&gt;&lt;p&gt;体系图一览&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+    <category term="学java(基础)" scheme="http://example.com/tags/%E5%AD%A6java-%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+</feed>
