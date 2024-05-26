@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-05-18T16:03:40.209Z</updated>
+  <updated>2024-05-26T12:57:45.174Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,59 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java泛型</title>
+    <link href="http://example.com/2024/05/26/java%E6%B3%9B%E5%9E%8B/"/>
+    <id>http://example.com/2024/05/26/java%E6%B3%9B%E5%9E%8B/</id>
+    <published>2024-05-25T16:18:01.000Z</published>
+    <updated>2024-05-26T12:57:45.174Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h1 id=&quot;泛型&quot;&gt;&lt;a href=&quot;#泛型&quot; class=&quot;headerlink&quot; title=&quot;泛型&quot;&gt;&lt;/a&gt;泛型&lt;/h1&gt;&lt;h2 id=&quot;基本理解&quot;&gt;&lt;a href=&quot;#基本理解&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="java基础" scheme="http://example.com/categories/java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="学java(基础)" scheme="http://example.com/tags/%E5%AD%A6java-%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java集合</title>
+    <link href="http://example.com/2024/05/21/%E9%9B%86%E5%90%88/"/>
+    <id>http://example.com/2024/05/21/%E9%9B%86%E5%90%88/</id>
+    <published>2024-05-21T12:36:01.000Z</published>
+    <updated>2024-05-26T12:57:45.176Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[toc] &lt;/p&gt;
+&lt;h1 id=&quot;java集合&quot;&gt;&lt;a href=&quot;#java集合&quot; class=&quot;headerlink&quot; title=&quot;java集合&quot;&gt;&lt;/a&gt;java集合&lt;/h1&gt;&lt;p&gt;体系图一览&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="java基础" scheme="http://example.com/categories/java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="学java(基础)" scheme="http://example.com/tags/%E5%AD%A6java-%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>我的第一篇博客</title>
@@ -37,33 +90,6 @@
     
     
     <category term="博客搭建" scheme="http://example.com/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java集合</title>
-    <link href="http://example.com/2024/05/17/%E9%9B%86%E5%90%88/"/>
-    <id>http://example.com/2024/05/17/%E9%9B%86%E5%90%88/</id>
-    <published>2024-05-17T12:36:01.000Z</published>
-    <updated>2024-05-24T16:30:42.956Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;[toc] &lt;/p&gt;
-&lt;h1 id=&quot;java集合&quot;&gt;&lt;a href=&quot;#java集合&quot; class=&quot;headerlink&quot; title=&quot;java集合&quot;&gt;&lt;/a&gt;java集合&lt;/h1&gt;&lt;p&gt;体系图一览&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="集合" scheme="http://example.com/categories/%E9%9B%86%E5%90%88/"/>
-    
-    
-    <category term="学java(基础)" scheme="http://example.com/tags/%E5%AD%A6java-%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
