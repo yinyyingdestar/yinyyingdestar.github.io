@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>javaIO流 |  添砖java</title>
+      <title>java网络编程（基础） |  添砖java</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/1715850294813.ico" />
@@ -54,7 +54,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-IO流"
+  id="post-java网络编程"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -65,7 +65,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  javaIO流
+  java网络编程（基础）
 </h1>
  
 
@@ -73,8 +73,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2024/07/12/IO%E6%B5%81/" class="article-date">
-  <time datetime="2024-07-12T01:10:01.000Z" itemprop="datePublished">2024-07-12</time>
+      <a href="/2024/07/19/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="article-date">
+  <time datetime="2024-07-19T06:29:01.000Z" itemprop="datePublished">2024-07-19</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/java%E5%9F%BA%E7%A1%80/">java基础</a>
@@ -85,7 +85,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">586</span>
+            <span class="post-count">953</span>
         </span>
     </span>
 
@@ -94,7 +94,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2 分钟</span>
+            <span class="post-count">3 分钟</span>
         </span>
     </span>
 </div>
@@ -110,31 +110,61 @@
     <div class="article-entry" itemprop="articleBody">
        
   <p>[toc]</p>
-<h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><h2 id="基本理解"><a href="#基本理解" class="headerlink" title="基本理解"></a>基本理解</h2><p>流是程序操作文件的一种方式, java程序与文件间输入输出通过IO流控制</p>
-<h2 id="一览图"><a href="#一览图" class="headerlink" title="一览图"></a>一览图</h2><p><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/IO.png" alt="IO"></p>
-<h2 id="操作文件"><a href="#操作文件" class="headerlink" title="操作文件"></a>操作文件</h2><p>mkdir():创建一级目录<br>mkdirs():创建多级目录<br>delete():删除文件或目录</p>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E5%88%86%E7%B1%BB.png" alt="分类"><br>!!!切记关流</p>
-<h2 id="节点流和处理流"><a href="#节点流和处理流" class="headerlink" title="节点流和处理流"></a>节点流和处理流</h2><h3 id="一览图-1"><a href="#一览图-1" class="headerlink" title="一览图"></a>一览图</h3><p><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E4%B8%80%E8%A7%88%E5%9B%BE.png" alt="一览图"></p>
-<h3 id="节点流"><a href="#节点流" class="headerlink" title="节点流"></a>节点流</h3><ol>
-<li>为了提高效率, 通常用字节数组来进行操作</li>
-<li>(循环)read(byte&#x2F;byte[] b)读取文件, 读完返回-1; (循环)write(byte[] b, int off, int length)将数据写入文件<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> ((readLen = fileInputStream.read(buf)) != -<span class="number">1</span>) &#123;</span><br><span class="line">	System.out.print(<span class="keyword">new</span> <span class="title class_">String</span>(buf, <span class="number">0</span>, readLen));<span class="comment">//显示</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<h1 id="java网络编程"><a href="#java网络编程" class="headerlink" title="java网络编程"></a>java网络编程</h1><h2 id="网络通信"><a href="#网络通信" class="headerlink" title="网络通信"></a>网络通信</h2><p>两台设备之间通过网络实现数据传输, java.net包下提供了一系列类和接口</p>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><p>根据网络覆盖范围分为: 局域网, 城域网, 广域网(万维网)</p>
+<h2 id="ip地址"><a href="#ip地址" class="headerlink" title="ip地址"></a>ip地址</h2><p>查看ip地址: ipconfig<br>一个字节范围是0~255</p>
+<h3 id="ipv4"><a href="#ipv4" class="headerlink" title="ipv4"></a>ipv4</h3><ol>
+<li>表示形式: 点分十进制 xx.xx.xx.xx</li>
+<li>有4个字节</li>
+<li>127.0.0.1:表示本机地址</li>
 </ol>
-<h3 id="处理流"><a href="#处理流" class="headerlink" title="处理流"></a>处理流</h3><p>概念: 为了进一步提高读写效率,诞生了处理流, 拥有更强大灵活的读写功能<br>设计模式: 通过对节点流进行包装,使用修饰器设计模式(多态的动态绑定机制), 因而节点流就成为了低级模式(类似于底层)</p>
-<h4 id="常用类"><a href="#常用类" class="headerlink" title="常用类"></a>常用类</h4><h5 id="BufferedReader-Writer"><a href="#BufferedReader-Writer" class="headerlink" title="BufferedReader&#x2F;Writer:"></a>BufferedReader&#x2F;Writer:</h5><p>(循环)readline()读取文件, 读完返回null; write()类似,newline()换行</p>
-<h5 id="对象流"><a href="#对象流" class="headerlink" title="对象流"></a>对象流</h5><p>ObjectOutputStream 序列化保存; ObjectInputStream 反序列化读取<br>注:<br><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.png" alt="注意事项"></p>
-<h5 id="转换流-InputStreamReader-Writer"><a href="#转换流-InputStreamReader-Writer" class="headerlink" title="转换流(InputStreamReader&#x2F;Writer)"></a>转换流(InputStreamReader&#x2F;Writer)</h5><ol>
-<li>可指定转换字符, 解决乱码</li>
-<li>可将字节流转换成字符流</li>
+<h3 id="ipv6"><a href="#ipv6" class="headerlink" title="ipv6"></a>ipv6</h3><p> 表示形式多种, 十六进制,  有16个字节</p>
+<h2 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h2><p><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E5%9F%9F%E5%90%8D.png" alt="域名"></p>
+<h2 id="网络通信协议"><a href="#网络通信协议" class="headerlink" title="网络通信协议"></a>网络通信协议</h2><p><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE.png" alt="网络通信协议"></p>
+<h2 id="TCP和UDP"><a href="#TCP和UDP" class="headerlink" title="TCP和UDP"></a>TCP和UDP</h2><h3 id="TCP协议-传输控制协议"><a href="#TCP协议-传输控制协议" class="headerlink" title="TCP协议(传输控制协议)"></a>TCP协议(传输控制协议)</h3><ol>
+<li>使用TCP协议前，须先建立TCP连接，形成传输数据通道</li>
+<li>传输前，采用“三次握手“方式，是可靠的</li>
+<li>TCP协议进行通信的两个应用进程：客户端、服务端</li>
+<li>在连接中可进行大数据量的传输<br>5.传输完毕，需释放已建立的连接，效率低</li>
 </ol>
-<h5 id="打印流-PrintStream-PrintWriter"><a href="#打印流-PrintStream-PrintWriter" class="headerlink" title="打印流(PrintStream&#x2F;PrintWriter)"></a>打印流(PrintStream&#x2F;PrintWriter)</h5><ol>
-<li>只有输出流</li>
-<li>默认情况下打印位置是显示器, 可更改打印位置]<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//默认情况</span></span><br><span class="line"><span class="type">PrintStream</span> <span class="variable">out</span> <span class="operator">=</span> System.out;</span><br><span class="line">out.write(<span class="string">&quot;韩顺平,你好&quot;</span>.getBytes());</span><br><span class="line">out.close();</span><br><span class="line"><span class="comment">//改, 打印在e:\\f1.txt</span></span><br><span class="line">System.setOut(<span class="keyword">new</span> <span class="title class_">PrintStream</span>(<span class="string">&quot;e:\\f1.txt&quot;</span>));</span><br><span class="line">System.out.println(<span class="string">&quot;hello~&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<h3 id="UDP协议-用户数据协议"><a href="#UDP协议-用户数据协议" class="headerlink" title="UDP协议(用户数据协议)"></a>UDP协议(用户数据协议)</h3><ol>
+<li>将数据、源、目的封装成数据包，不需要建立连接</li>
+<li>每个数据报的大小限制在64K内，不适合传输大量数据</li>
+<li>因无需连接，故是不可靠的</li>
+<li>发送数据结束时无需释放资源（因为不是面向连接的)，速度快</li>
 </ol>
-<h2 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h2><ol>
-<li>一种方便读取数据的类</li>
-<li>用键值形式储存</li>
-<li>循环读取:<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//读取 mysql.properties 文件，并得到 ip, user 和 pwd</span></span><br><span class="line"><span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;src\\mysql.properties&quot;</span>));</span><br><span class="line"><span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="keyword">while</span> ((line = br.readLine()) != <span class="literal">null</span>) &#123; <span class="comment">//循环读取</span></span><br><span class="line">	String[] split = line.split(<span class="string">&quot;=&quot;</span>);</span><br><span class="line">	<span class="comment">//如果我们要求指定的 ip 值</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="string">&quot;ip&quot;</span>.equals(split[<span class="number">0</span>])) &#123;</span><br><span class="line">	System.out.println(split[<span class="number">0</span>] + <span class="string">&quot;值是: &quot;</span> + split[<span class="number">1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">br.close();</span><br></pre></td></tr></table></figure></li>
-<li>指定读取<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1. 创建 Properties 对象</span></span><br><span class="line"><span class="type">Properties</span> <span class="variable">properties</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line"><span class="comment">//2. 加载指定配置文件</span></span><br><span class="line">properties.load(<span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;src\\mysql.properties&quot;</span>));</span><br><span class="line"><span class="comment">//3. 把 k-v 显示控制台</span></span><br><span class="line">properties.list(System.out);</span><br><span class="line"><span class="comment">//4. 根据 key 获取对应的值</span></span><br><span class="line"><span class="type">String</span> <span class="variable">user</span> <span class="operator">=</span> properties.getProperty(<span class="string">&quot;user&quot;</span>);<span class="comment">//getProperty返回string</span></span><br><span class="line"><span class="type">String</span> <span class="variable">user2</span> <span class="operator">=</span> properties.get(<span class="string">&quot;user&quot;</span>);<span class="comment">//get返回Object</span></span><br><span class="line">System.out.println(<span class="string">&quot;用户名=&quot;</span> + user);</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<h2 id="InetAddress"><a href="#InetAddress" class="headerlink" title="InetAddress"></a>InetAddress</h2><p>相关方法:</p>
+<ol>
+<li>getLocalHost: 返回计算机名和ip地址;</li>
+<li>getByName: 根据指定主机名&#x2F;域名获取 ip 地址;</li>
+<li>getHostName: 获取 InetAddress 对象的主机名或域名;</li>
+<li>getHostAddress: 获取 InetAddress 对象的地址</li>
+</ol>
+<h2 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h2><ol>
+<li>是两台机器间通信的端点;</li>
+<li>Socket允许程序把网络连接当成一个流, 数据在两个Socket间通过IO传输;</li>
+<li>一般把发起通信的应用程序称为客户端, 等待通信请求的为服务端</li>
+</ol>
+<h2 id="netstat-指令"><a href="#netstat-指令" class="headerlink" title="netstat 指令"></a>netstat 指令</h2><p><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/netstat%20%E6%8C%87%E4%BB%A4.png" alt="netstat 指令"></p>
+<h2 id="网络通信编程"><a href="#网络通信编程" class="headerlink" title="网络通信编程"></a>网络通信编程</h2><h3 id="TCP编程"><a href="#TCP编程" class="headerlink" title="TCP编程"></a>TCP编程</h3><h4 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h4><p><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/TCP.png" alt="TCP"></p>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ol>
+<li>IO 读取<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//字节流</span></span><br><span class="line"><span class="type">byte</span>[] buf = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line"><span class="type">int</span> <span class="variable">readLen</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> ((readLen = inputStream.read(buf)) != -<span class="number">1</span>) &#123;</span><br><span class="line">System.out.println(<span class="keyword">new</span> <span class="title class_">String</span>(buf, <span class="number">0</span>, readLen));<span class="comment">//根据读取到的实际长度，显示内容.</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//字符流</span></span><br><span class="line"><span class="type">byte</span>[] buf = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line"><span class="type">int</span> <span class="variable">readLen</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> ((readLen = inputStream.read(buf)) != -<span class="number">1</span>) &#123;</span><br><span class="line">System.out.println(<span class="keyword">new</span> <span class="title class_">String</span>(buf, <span class="number">0</span>, readLen));<span class="comment">//根据读取到的实际长度，显示内容.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>写入数据要设置结束标记, 字符流还要手动flush;<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//字节流</span></span><br><span class="line">socket.shutdownOutput();</span><br><span class="line"><span class="comment">//字符流</span></span><br><span class="line">bufferedWriter.write(<span class="string">&quot;hello client 字符流&quot;</span>);</span><br><span class="line">bufferedWriter.newLine();<span class="comment">// 插入一个换行符，表示回复内容的结束</span></span><br><span class="line">bufferedWriter.flush();</span><br></pre></td></tr></table></figure></li>
+<li>记得要关闭流和socket;</li>
+<li>socket只能获取到字节流, 使用字符流需要转换;<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BufferedReader</span> <span class="variable">bufferedReader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(socket.getInputStream()))</span><br><span class="line"></span><br><span class="line"><span class="type">BufferedWriter</span> <span class="variable">bufferedWriter</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(socket.getOutputStream()));</span><br></pre></td></tr></table></figure></li>
+<li>传输图片或视频时, 转换成字符读取传输, 接收写入;</li>
+<li>当客户端连接到服务端后, 实际上客户端也是通过一个端口和服务端进行通讯的, 之歌端口时TCP&#x2F;IP来分配的, 是随机的</li>
+</ol>
+<h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3><ol>
+<li>类DatagramSocket 和DatagramPacket[数据包&#x2F;数据报]实现了基于UDP<br>协议网络程序;</li>
+<li>DatagramPacket 对象封装了UDP数据报，在数据报中包含了发送端的IP地址和<br>端口号以及接收端的IP地址和端口号</li>
+</ol>
+<h4 id="基本步骤-1"><a href="#基本步骤-1" class="headerlink" title="基本步骤"></a>基本步骤</h4><ol>
+<li>核心的两个类&#x2F;对象 DatagramSocket与DatagramPacket</li>
+<li>建立发送端，接收端（没有服务端和客户端概念)<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//发送端</span></span><br><span class="line"><span class="type">DatagramSocket</span> <span class="variable">socket</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DatagramSocket</span>(<span class="number">9998</span>);</span><br><span class="line"><span class="type">byte</span>[] data = <span class="string">&quot;hello 明天吃火锅~&quot;</span>.getBytes();</span><br><span class="line"><span class="type">DatagramPacket</span> <span class="variable">packet</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DatagramPacket</span>(data, data.length,InetAddress.getByName(<span class="string">&quot;192.168.12.1&quot;</span>), <span class="number">9999</span>);</span><br><span class="line">socket.send(packet);</span><br><span class="line"><span class="comment">//接收端</span></span><br><span class="line"><span class="type">byte</span>[] buf = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line"><span class="type">DatagramPacket</span> <span class="variable">packet</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DatagramPacket</span>(buf, buf.length);</span><br></pre></td></tr></table></figure></li>
+<li>发送数据前，建立数据包&#x2F;报DatagramPacket对象</li>
+<li>调用DatagramSocket的发送、接收方法<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">socket.receive(packet);</span><br><span class="line"><span class="type">int</span> <span class="variable">length</span> <span class="operator">=</span> packet.getLength();<span class="comment">//实际接收到的数据字节长度</span></span><br><span class="line"><span class="type">byte</span>[] data = packet.getData();<span class="comment">//接收到数据</span></span><br><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(data, <span class="number">0</span>, length);</span><br></pre></td></tr></table></figure></li>
+<li>关闭DatagramSocket</li>
 </ol>
 <blockquote>
 <p>本文截图均来自于<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1fh411y7R8/?spm_id_from=333.999.0.0&vd_source=3f176702ea98369f18fc10e9013aa770">【零基础 快速学Java】韩顺平 零基础30天学会Java</a></p>
@@ -209,7 +239,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/07/12/IO%E6%B5%81/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/07/19/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -222,19 +252,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2024/07/19/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            java网络编程（基础）
-          
-        </div>
-      </a>
     
-    
-      <a href="/2024/05/26/java%E6%B3%9B%E5%9E%8B/" class="article-nav-link">
+      <a href="/2024/07/12/IO%E6%B5%81/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">java泛型</div>
+        <div class="article-nav-title">javaIO流</div>
       </a>
     
   </nav>
