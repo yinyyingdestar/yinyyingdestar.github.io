@@ -327,4 +327,35 @@
         <tag>算法学习(java)</tag>
       </tags>
   </entry>
+  <entry>
+    <title>算法学习（题解）</title>
+    <url>/2024/08/18/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A02%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/</url>
+    <content><![CDATA[<p>[toc] </p>
+<h1 id="算法学习-题解"><a href="#算法学习-题解" class="headerlink" title="算法学习(题解)"></a>算法学习(题解)</h1><h2 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h2><p>给你一个 32 位的有符号整数 <code>x</code> ，返回将 <code>x</code> 中的数字部分反转后的结果。如果反转后整数超过 32 位的有符号整数的范围 <code>[−2^31,  2^31 − 1]</code> ，就返回 0。<br>假设环境不允许存储 64 位整数（有符号或无符号）。</p>
+<h2 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：x = 123</span><br><span class="line">输出：321</span><br></pre></td></tr></table></figure>
+<h2 id="3-思路"><a href="#3-思路" class="headerlink" title="3.思路"></a>3.思路</h2><ol>
+<li>想要实现反转就要将每个数字提出来，于是可以用<code>%</code>循环除以元数据<code>10</code>来取余数；</li>
+<li>然后可以将取到的每一位数存到数组里面最后再遍历输出，但因为最后都要加起来，因此直接累加</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> x % <span class="number">10</span>;<span class="comment">//为源数据</span></span><br><span class="line">reverse = reverse * <span class="number">10</span> + t;<span class="comment">//reverse为返回值</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>还要判断反转后是否超出范围</li>
+</ol>
+<p>​     (1)直接用范围极值用<code>if</code>进行判断；</p>
+<p>​     (2)因为超出范围运算无效，可以逆向运算返回去比较</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">reverse</span><span class="params">(<span class="type">int</span> x)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> x % <span class="number">10</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">newRes</span> <span class="operator">=</span> res * <span class="number">10</span> + t;</span><br><span class="line">            <span class="keyword">if</span> ((newRes - t) / <span class="number">10</span> != res)<span class="comment">//如果数字溢出，直接返回0</span></span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            res = newRes;</span><br><span class="line">            x = x / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">作者：数据结构和算法</span><br><span class="line">来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
+<p><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnx13t/?discussion=ukHfZx">链接</a><br>               if语句中还可以判断余数是否相等;</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">newRes % <span class="number">10</span> != x%<span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<p>​     (3)还可以直接定义长整型，再强换成整型比较数值是否相同。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">reverse</span><span class="params">(<span class="type">int</span> x)</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</span><br><span class="line">            res = res * <span class="number">10</span> + x % <span class="number">10</span>;</span><br><span class="line">            x /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (<span class="type">int</span>) res == res ? (<span class="type">int</span>) res : <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">作者：数据结构和算法</span><br><span class="line">来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
+<p><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnx13t/?discussion=ukHfZx">链接</a></p>
+]]></content>
+      <categories>
+        <category>字符串</category>
+      </categories>
+      <tags>
+        <tag>算法学习(java)</tag>
+      </tags>
+  </entry>
 </search>

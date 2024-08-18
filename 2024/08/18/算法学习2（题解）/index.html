@@ -54,7 +54,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-算法学习（题解）"
+  id="post-算法学习2（题解）"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -73,11 +73,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2024/08/07/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-date">
-  <time datetime="2024-08-07T06:26:01.000Z" itemprop="datePublished">2024-08-07</time>
+      <a href="/2024/08/18/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A02%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-date">
+  <time datetime="2024-08-18T09:01:01.000Z" itemprop="datePublished">2024-08-18</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%B0%E7%BB%84/">数组</a>
+    <a class="article-category-link" href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
   </div>
   
 <div class="word_count">
@@ -85,7 +85,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">482</span>
+            <span class="post-count">398</span>
         </span>
     </span>
 
@@ -94,7 +94,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2 分钟</span>
+            <span class="post-count">1 分钟</span>
         </span>
     </span>
 </div>
@@ -110,22 +110,25 @@
     <div class="article-entry" itemprop="articleBody">
        
   <p>[toc] </p>
-<h1 id="算法学习-题解"><a href="#算法学习-题解" class="headerlink" title="算法学习(题解)"></a>算法学习(题解)</h1><h2 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h2><p>给定一个整数数组<code>nums</code>，将数组中的元素向右轮转<code>k</code>个位置，其中<code> k</code> 是非负数。</p>
-<h2 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [1,2,3,4,5,6,7], k = 3</span><br><span class="line">输出: [5,6,7,1,2,3,4]</span><br><span class="line">解释:</span><br><span class="line">向右轮转 1 步: [7,1,2,3,4,5,6]</span><br><span class="line">向右轮转 2 步: [6,7,1,2,3,4,5]</span><br><span class="line">向右轮转 3 步: [5,6,7,1,2,3,4]</span><br></pre></td></tr></table></figure>
+<h1 id="算法学习-题解"><a href="#算法学习-题解" class="headerlink" title="算法学习(题解)"></a>算法学习(题解)</h1><h2 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h2><p>给你一个 32 位的有符号整数 <code>x</code> ，返回将 <code>x</code> 中的数字部分反转后的结果。如果反转后整数超过 32 位的有符号整数的范围 <code>[−2^31,  2^31 − 1]</code> ，就返回 0。<br>假设环境不允许存储 64 位整数（有符号或无符号）。</p>
+<h2 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：x = 123</span><br><span class="line">输出：321</span><br></pre></td></tr></table></figure>
 <h2 id="3-思路"><a href="#3-思路" class="headerlink" title="3.思路"></a>3.思路</h2><ol>
-<li>临时数组:  最直接的方法使用一个临时数组,复制原数组的值, 将每个元素后移<code>k%nums.length</code>位即可</li>
-<li>环形旋转: 从第一个开始, 依次往后移动<code>k%nums.length</code>位, 取出目标位置的值, 赋上原位置的值, 如图所示:<br> <img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E7%8E%AF%E5%BD%A2%E6%97%8B%E8%BD%AC.png" alt="环形旋转"><br> 但是如果<code>nums.length%k=0</code>, 也就是数组长度为k的倍数时会陷入死循环, 就有以下两种解决方法:<ol>
-<li><p>使用一个数组记录已经处理过的位置, 使用布尔类型的数组可能稍微方便一点</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">rotate</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">       <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> <span class="number">0</span>,a = <span class="number">0</span>, exchange = <span class="number">0</span>, count = <span class="number">0</span>, len = nums.length;</span><br><span class="line">       <span class="type">boolean</span>[] arr = <span class="keyword">new</span> <span class="title class_">boolean</span>[len];</span><br><span class="line">       k %= len;</span><br><span class="line">       <span class="keyword">if</span>(nums == <span class="literal">null</span>||len ==<span class="number">1</span>||k == <span class="number">0</span>)&#123;</span><br><span class="line">               <span class="keyword">return</span> ;</span><br><span class="line">       &#125;</span><br><span class="line">       exchange = nums[<span class="number">0</span>];</span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; len;i++)&#123;</span><br><span class="line">       	<span class="keyword">if</span>(arr[a])&#123;</span><br><span class="line">               a = (a + <span class="number">1</span>)%len;</span><br><span class="line">               exchange = nums[a];</span><br><span class="line">               i--;</span><br><span class="line">      		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">       		a = (a+k)%len;</span><br><span class="line">           	temp = nums[a];</span><br><span class="line">           	nums[a] = exchange;</span><br><span class="line">           	exchange = temp;</span><br><span class="line">           	arr[a] = <span class="literal">true</span>;          </span><br><span class="line">       	&#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p> <a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2skh7/?discussion=x7EjsX">来源</a></p>
-</li>
-<li><p>(真正的原地算法) 因为第一次出现特殊情况时<code>nums.length%k=0</code>, 也就是说起始循环位置——索引为<code>0</code>,而<code> count</code>通过依次自增 , 充当了记录起始循环位置索引的职责, 实现十分巧妙</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">rotate</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> <span class="number">0</span>,a = <span class="number">0</span>, exchange = <span class="number">0</span>, count = <span class="number">0</span>, len = nums.length;</span><br><span class="line">    k %= len;</span><br><span class="line">    <span class="keyword">if</span>(nums == <span class="literal">null</span>||len ==<span class="number">1</span>||k == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    exchange = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; len;i++)&#123;</span><br><span class="line">        a = (a+k)%len;</span><br><span class="line">        temp = nums[a];</span><br><span class="line">        nums[a] = exchange;</span><br><span class="line">        exchange = temp;</span><br><span class="line">        <span class="keyword">if</span>(a%len == count)&#123;</span><br><span class="line">            count++;</span><br><span class="line">            a = count;</span><br><span class="line">            exchange = nums[a%len];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">	 </span><br></pre></td></tr></table></figure>
-<p> <a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2skh7/?discussion=iInPDl">来源</a></p>
-</li>
+<li>想要实现反转就要将每个数字提出来，于是可以用<code>%</code>循环除以元数据<code>10</code>来取余数；</li>
+<li>然后可以将取到的每一位数存到数组里面最后再遍历输出，但因为最后都要加起来，因此直接累加</li>
 </ol>
-</li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> x % <span class="number">10</span>;<span class="comment">//为源数据</span></span><br><span class="line">reverse = reverse * <span class="number">10</span> + t;<span class="comment">//reverse为返回值</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>还要判断反转后是否超出范围</li>
 </ol>
+<p>​     (1)直接用范围极值用<code>if</code>进行判断；</p>
+<p>​     (2)因为超出范围运算无效，可以逆向运算返回去比较</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">reverse</span><span class="params">(<span class="type">int</span> x)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> x % <span class="number">10</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">newRes</span> <span class="operator">=</span> res * <span class="number">10</span> + t;</span><br><span class="line">            <span class="keyword">if</span> ((newRes - t) / <span class="number">10</span> != res)<span class="comment">//如果数字溢出，直接返回0</span></span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            res = newRes;</span><br><span class="line">            x = x / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">作者：数据结构和算法</span><br><span class="line">来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnx13t/?discussion=ukHfZx">链接</a><br>               if语句中还可以判断余数是否相等;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newRes % <span class="number">10</span> != x%<span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<p>​     (3)还可以直接定义长整型，再强换成整型比较数值是否相同。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">reverse</span><span class="params">(<span class="type">int</span> x)</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</span><br><span class="line">            res = res * <span class="number">10</span> + x % <span class="number">10</span>;</span><br><span class="line">            x /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (<span class="type">int</span>) res == res ? (<span class="type">int</span>) res : <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">作者：数据结构和算法</span><br><span class="line">来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnx13t/?discussion=ukHfZx">链接</a></p>
  
       <!-- reward -->
       
@@ -196,7 +199,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/08/07/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/08/18/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A02%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -209,19 +212,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2024/08/18/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A02%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            算法学习（题解）
-          
-        </div>
-      </a>
     
-    
-      <a href="/2024/07/19/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="article-nav-link">
+      <a href="/2024/08/07/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">java网络编程（基础）</div>
+        <div class="article-nav-title">算法学习（题解）</div>
       </a>
     
   </nav>
