@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>算法学习（题解） |  添砖java</title>
+      <title>算法学习4（题解） |  添砖java</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/1715850294813.ico" />
@@ -54,7 +54,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-算法学习3（题解）"
+  id="post-算法学习4（题解）"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -65,7 +65,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  算法学习（题解）
+  算法学习4（题解）
 </h1>
  
 
@@ -73,11 +73,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2024/08/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A03%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-date">
-  <time datetime="2024-08-19T08:49:01.000Z" itemprop="datePublished">2024-08-19</time>
+      <a href="/2024/08/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A04%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-date">
+  <time datetime="2024-08-20T01:40:01.000Z" itemprop="datePublished">2024-08-20</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F/">旋转图像</a>
+    <a class="article-category-link" href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%94%AF%E4%B8%80%E5%AD%97%E7%AC%A6/">字符串中唯一字符</a>
   </div>
   
 <div class="word_count">
@@ -85,7 +85,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">407</span>
+            <span class="post-count">599</span>
         </span>
     </span>
 
@@ -94,7 +94,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">2 分钟</span>
         </span>
     </span>
 </div>
@@ -110,15 +110,23 @@
     <div class="article-entry" itemprop="articleBody">
        
   <p>[toc] </p>
-<h1 id="算法学习-题解"><a href="#算法学习-题解" class="headerlink" title="算法学习(题解)"></a>算法学习(题解)</h1><h2 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h2><p>给定一个 n × n 的二维矩阵<code>matrix</code>表示一个图像。请你将图像顺时针旋转 90 度。你必须在<code>原地</code>旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要 使用另一个矩阵来旋转图像。</p>
-<h2 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix = [[1,2,3],</span><br><span class="line">               [4,5,6],</span><br><span class="line">               [7,8,9]]</span><br><span class="line">输出：matrix = [[7,4,1],</span><br><span class="line">               [8,5,2],</span><br><span class="line">               [9,6,3]]</span><br></pre></td></tr></table></figure>
-<h2 id="3-思路（原地算法）"><a href="#3-思路（原地算法）" class="headerlink" title="3.思路（原地算法）"></a>3.思路（原地算法）</h2><ol>
-<li>分析可知，顺时针旋转90度就是每四个元素一组，依次往后挪一个位置，比如实例中<code>(0,1)</code>到<code>(1,2)</code>到<code>(2,1)</code>到<code>(1,0)</code>，中间元素则不必理会；<br> <img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/image-20240819171917250.png" alt="旋转数组"></li>
-<li>为了找出普遍规律，每次的位置变化都可以看做目标元素围绕着顶点旋转后进行了一次平移<br> <img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/image-20240819173447630.png" alt="旋转图像"><br> 而每次平移的长度就是数组长度-1-当前位置索引即为<code>len-1-i</code>或者<code>len-1-j</code>；</li>
-<li>因为是四个元素一个循环，所以只需要遍历一半行数，所需遍历的列数在两个对角线范围内；<br><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/image-20240819174529415.png" alt="遍历"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; len/<span class="number">2</span>;i++) &#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i ; j &lt; len-i-<span class="number">1</span>; j++) &#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>最后就是四个元素一组进行的循环，因没有规律可言，选择直接把四个写出来；<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">rotate</span><span class="params">(<span class="type">int</span>[][] matrix)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> matrix.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; len/<span class="number">2</span>;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i ; j &lt; len-i-<span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> len-j-<span class="number">1</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> len-i-<span class="number">1</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> matrix[i][j];</span><br><span class="line">            matrix[i][j] = matrix[x][i];</span><br><span class="line">            matrix[x][i] = matrix[y][x];</span><br><span class="line">            matrix[y][x] = matrix[j][y];</span><br><span class="line">            matrix[j][y] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnhhkv/?discussion=55PjY0">链接</a></li>
+<h1 id="算法学习-题解"><a href="#算法学习-题解" class="headerlink" title="算法学习(题解)"></a>算法学习(题解)</h1><h2 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h2><p>给定一个只包含有小写字母字符串<code>s</code>，找到它的第一个不重复的字符，并返回它的索引 。如果不存在，则返回<code>-1</code>。</p>
+<h2 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: s = &quot;loveleetcode&quot;</span><br><span class="line">输出: 2</span><br><span class="line"></span><br><span class="line">输入: s = &quot;aabb&quot;</span><br><span class="line">输出: -1</span><br></pre></td></tr></table></figure>
+<h2 id="3-思路"><a href="#3-思路" class="headerlink" title="3.思路"></a>3.思路</h2><ol>
+<li>首先把字符串用<code>toCharArray()</code>转换成字符数组<code>chars</code>，当然也可以老老实实的用<code>charAt()</code>；</li>
+<li>我们是要找出第一个不重复的字母，被选中的字母都会直接或间接的与所有字母比较，因此我们<br> 选择自制一个哈希表来统计并区分字母是否重复，因为无法第一时间返回未重复字母，所以事后还要进行一次遍历；</li>
+<li>创建哈希表有以下两种思路：<ol>
+<li>（1）本人这种方法比较繁杂，首先创建一个<code>s.length()</code>大小的数组；<br>（2）通过将字母转换成数字并进行取余运算，从而确定该字母在<code>arr</code>中的储存位置；<br>（3）统计到字母重复的会在布尔数组<code>arr2</code>中经行标记;<br>（4）最后再对没有被标记过的进行遍历，找出索引最小的并返回，没有则返回<code>-1</code>。</li>
 </ol>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> []arr = <span class="keyword">new</span> <span class="title class_">int</span>[s.length()];</span><br><span class="line"><span class="type">boolean</span> []arr2 = <span class="keyword">new</span> <span class="title class_">boolean</span>[s.length()];</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> chars[i];</span><br><span class="line">    t %= s.length();</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[t] == -<span class="number">1</span>)&#123;</span><br><span class="line">            arr[t] = i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (s.charAt(i) == s.charAt(arr[t]))&#123;</span><br><span class="line">            <span class="keyword">if</span>(!arr2[t])&#123;</span><br><span class="line">                arr2[t] = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                t = (t+<span class="number">1</span>)%s.length();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>（1）大佬的做法：因为26个字母嘛，所以直接创建一个大小为26的整型数组<code>count</code>；<br>（2）巧妙的来了，<code>chars[i] - &#39;a&#39;</code>计算出每个字母的位置，一个萝卜一个坑地统计出现次数；<br>（3）最后再用字符数组<code>chars</code>开始依次遍历找出值为<code>1</code>的<code>count</code>所对应字母的索引，若没找到则返回<code>-1</code>。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">firstUniqChar</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="type">int</span> count[] = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="type">char</span>[] chars = s.toCharArray();</span><br><span class="line">        <span class="comment">//先统计每个字符出现的次数</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length(); i++)</span><br><span class="line">            count[chars[i] - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">        <span class="comment">//然后在遍历字符串s中的字符，如果出现次数是1就直接返回</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length(); i++)</span><br><span class="line">            <span class="keyword">if</span> (count[chars[i] - <span class="string">&#x27;a&#x27;</span>] == <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">作者：数据结构和算法</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xn5z8r/?discussion=6TyKA7">链接</a></p>
  
       <!-- reward -->
       
@@ -189,7 +197,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/08/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A03%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/08/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A04%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -202,17 +210,8 @@
    
   <nav class="article-nav">
     
-      <a href="/2024/08/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A04%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            算法学习4（题解）
-          
-        </div>
-      </a>
     
-    
-      <a href="/2024/08/18/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A02%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-nav-link">
+      <a href="/2024/08/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A03%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">算法学习（题解）</div>
       </a>

@@ -379,4 +379,33 @@
         <tag>算法学习(java)</tag>
       </tags>
   </entry>
+  <entry>
+    <title>算法学习4（题解）</title>
+    <url>/2024/08/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A04%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/</url>
+    <content><![CDATA[<p>[toc] </p>
+<h1 id="算法学习-题解"><a href="#算法学习-题解" class="headerlink" title="算法学习(题解)"></a>算法学习(题解)</h1><h2 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h2><p>给定一个只包含有小写字母字符串<code>s</code>，找到它的第一个不重复的字符，并返回它的索引 。如果不存在，则返回<code>-1</code>。</p>
+<h2 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入: s = &quot;loveleetcode&quot;</span><br><span class="line">输出: 2</span><br><span class="line"></span><br><span class="line">输入: s = &quot;aabb&quot;</span><br><span class="line">输出: -1</span><br></pre></td></tr></table></figure>
+<h2 id="3-思路"><a href="#3-思路" class="headerlink" title="3.思路"></a>3.思路</h2><ol>
+<li>首先把字符串用<code>toCharArray()</code>转换成字符数组<code>chars</code>，当然也可以老老实实的用<code>charAt()</code>；</li>
+<li>我们是要找出第一个不重复的字母，被选中的字母都会直接或间接的与所有字母比较，因此我们<br> 选择自制一个哈希表来统计并区分字母是否重复，因为无法第一时间返回未重复字母，所以事后还要进行一次遍历；</li>
+<li>创建哈希表有以下两种思路：<ol>
+<li>（1）本人这种方法比较繁杂，首先创建一个<code>s.length()</code>大小的数组；<br>（2）通过将字母转换成数字并进行取余运算，从而确定该字母在<code>arr</code>中的储存位置；<br>（3）统计到字母重复的会在布尔数组<code>arr2</code>中经行标记;<br>（4）最后再对没有被标记过的进行遍历，找出索引最小的并返回，没有则返回<code>-1</code>。</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> []arr = <span class="keyword">new</span> <span class="title class_">int</span>[s.length()];</span><br><span class="line"><span class="type">boolean</span> []arr2 = <span class="keyword">new</span> <span class="title class_">boolean</span>[s.length()];</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> chars[i];</span><br><span class="line">    t %= s.length();</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[t] == -<span class="number">1</span>)&#123;</span><br><span class="line">            arr[t] = i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (s.charAt(i) == s.charAt(arr[t]))&#123;</span><br><span class="line">            <span class="keyword">if</span>(!arr2[t])&#123;</span><br><span class="line">                arr2[t] = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                t = (t+<span class="number">1</span>)%s.length();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>（1）大佬的做法：因为26个字母嘛，所以直接创建一个大小为26的整型数组<code>count</code>；<br>（2）巧妙的来了，<code>chars[i] - &#39;a&#39;</code>计算出每个字母的位置，一个萝卜一个坑地统计出现次数；<br>（3）最后再用字符数组<code>chars</code>开始依次遍历找出值为<code>1</code>的<code>count</code>所对应字母的索引，若没找到则返回<code>-1</code>。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">firstUniqChar</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="type">int</span> count[] = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="type">char</span>[] chars = s.toCharArray();</span><br><span class="line">        <span class="comment">//先统计每个字符出现的次数</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length(); i++)</span><br><span class="line">            count[chars[i] - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">        <span class="comment">//然后在遍历字符串s中的字符，如果出现次数是1就直接返回</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length(); i++)</span><br><span class="line">            <span class="keyword">if</span> (count[chars[i] - <span class="string">&#x27;a&#x27;</span>] == <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">作者：数据结构和算法</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xn5z8r/?discussion=6TyKA7">链接</a></p>
+]]></content>
+      <categories>
+        <category>字符串中唯一字符</category>
+      </categories>
+      <tags>
+        <tag>算法学习(java)</tag>
+      </tags>
+  </entry>
 </search>
