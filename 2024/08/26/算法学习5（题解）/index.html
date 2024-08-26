@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>算法学习4（题解） |  添砖java</title>
+      <title>算法学习5（题解） |  添砖java</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/1715850294813.ico" />
@@ -54,7 +54,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-算法学习4（题解）"
+  id="post-算法学习5（题解）"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -65,7 +65,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  算法学习4（题解）
+  算法学习5（题解）
 </h1>
  
 
@@ -73,11 +73,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2024/08/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A04%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-date">
-  <time datetime="2024-08-20T01:40:01.000Z" itemprop="datePublished">2024-08-20</time>
+      <a href="/2024/08/26/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A05%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-date">
+  <time datetime="2024-08-26T01:00:01.000Z" itemprop="datePublished">2024-08-26</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%94%AF%E4%B8%80%E5%AD%97%E7%AC%A6/">字符串中唯一字符</a>
+    <a class="article-category-link" href="/categories/%E5%AE%9E%E7%8E%B0-strStr/">实现 strStr()</a>
   </div>
   
 <div class="word_count">
@@ -85,7 +85,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">599</span>
+            <span class="post-count">673</span>
         </span>
     </span>
 
@@ -94,7 +94,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2 分钟</span>
+            <span class="post-count">3 分钟</span>
         </span>
     </span>
 </div>
@@ -110,23 +110,27 @@
     <div class="article-entry" itemprop="articleBody">
        
   <p>[toc] </p>
-<h1 id="算法学习-题解"><a href="#算法学习-题解" class="headerlink" title="算法学习(题解)"></a>算法学习(题解)</h1><h2 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h2><p>给定一个只包含有小写字母字符串<code>s</code>，找到它的第一个不重复的字符，并返回它的索引 。如果不存在，则返回<code>-1</code>。</p>
-<h2 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: s = &quot;loveleetcode&quot;</span><br><span class="line">输出: 2</span><br><span class="line"></span><br><span class="line">输入: s = &quot;aabb&quot;</span><br><span class="line">输出: -1</span><br></pre></td></tr></table></figure>
-<h2 id="3-思路"><a href="#3-思路" class="headerlink" title="3.思路"></a>3.思路</h2><ol>
-<li>首先把字符串用<code>toCharArray()</code>转换成字符数组<code>chars</code>，当然也可以老老实实的用<code>charAt()</code>；</li>
-<li>我们是要找出第一个不重复的字母，被选中的字母都会直接或间接的与所有字母比较，因此我们<br> 选择自制一个哈希表来统计并区分字母是否重复，因为无法第一时间返回未重复字母，所以事后还要进行一次遍历；</li>
-<li>创建哈希表有以下两种思路：<ol>
-<li>（1）本人这种方法比较繁杂，首先创建一个<code>s.length()</code>大小的数组；<br>（2）通过将字母转换成数字并进行取余运算，从而确定该字母在<code>arr</code>中的储存位置；<br>（3）统计到字母重复的会在布尔数组<code>arr2</code>中经行标记;<br>（4）最后再对没有被标记过的进行遍历，找出索引最小的并返回，没有则返回<code>-1</code>。</li>
-</ol>
-</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> []arr = <span class="keyword">new</span> <span class="title class_">int</span>[s.length()];</span><br><span class="line"><span class="type">boolean</span> []arr2 = <span class="keyword">new</span> <span class="title class_">boolean</span>[s.length()];</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> chars[i];</span><br><span class="line">    t %= s.length();</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[t] == -<span class="number">1</span>)&#123;</span><br><span class="line">            arr[t] = i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (s.charAt(i) == s.charAt(arr[t]))&#123;</span><br><span class="line">            <span class="keyword">if</span>(!arr2[t])&#123;</span><br><span class="line">                arr2[t] = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                t = (t+<span class="number">1</span>)%s.length();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="算法学习-题解"><a href="#算法学习-题解" class="headerlink" title="算法学习(题解)"></a>算法学习(题解)</h1><h2 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h2><p>给你两个字符串<code>haystack</code>和<code>needle</code>，请你在<code>haystack</code>字符串中找出<code>needle</code>字符串的第一个匹配项的下标（下标从 0 开始）。如果<code>needle</code>不是<code>haystac</code>的一部分，则返回 <code>-1</code>。</p>
+<h2 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h2><p>实例1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：haystack = &quot;sadbutsad&quot;, needle = &quot;sad&quot;</span><br><span class="line">输出：0</span><br><span class="line">解释：&quot;sad&quot; 在下标 0 和 6 处匹配。</span><br><span class="line">第一个匹配项的下标是 0 ，所以返回 0 。</span><br></pre></td></tr></table></figure>
+<p>实例二</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：haystack = &quot;leetcode&quot;, needle = &quot;leeto&quot;</span><br><span class="line">输出：-1</span><br><span class="line">解释：&quot;leeto&quot; 没有在 &quot;leetcode&quot; 中出现，所以返回 -1 。</span><br></pre></td></tr></table></figure>
+<p>实例三</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：haystack = &quot;imimmip&quot;, needle = &quot;immip&quot;</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
+<h2 id="3-代码"><a href="#3-代码" class="headerlink" title="3.代码"></a>3.代码</h2><p>鄙人的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">strStr</span><span class="params">(String haystack, String needle)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">0</span>, temp = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; haystack.length();i++)&#123;</span><br><span class="line">        <span class="comment">/* 找到第一个相等的字符位置 */</span></span><br><span class="line">        <span class="keyword">if</span>(haystack.charAt(i) == needle.charAt(len))&#123;</span><br><span class="line">            len = i + needle.length();</span><br><span class="line">            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> i+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(len &gt; haystack.length())&#123;</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(needle.length() == <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">/* 查找剩下的*/</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; x &lt; len; x++, j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(haystack.charAt(x) != needle.charAt(j))&#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">/* Found whole string. */</span></span><br><span class="line">                <span class="keyword">if</span> (x == len-<span class="number">1</span>)&#123;</span><br><span class="line">                    <span class="keyword">return</span> a;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            len = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>（1）大佬的做法：因为26个字母嘛，所以直接创建一个大小为26的整型数组<code>count</code>；<br>（2）巧妙的来了，<code>chars[i] - &#39;a&#39;</code>计算出每个字母的位置，一个萝卜一个坑地统计出现次数；<br>（3）最后再用字符数组<code>chars</code>开始依次遍历找出值为<code>1</code>的<code>count</code>所对应字母的索引，若没找到则返回<code>-1</code>。</li>
+<p>官方的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">strStr</span><span class="params">(String haystack, String needle)</span> &#123;</span><br><span class="line">         <span class="type">int</span> <span class="variable">sl</span> <span class="operator">=</span> haystack.length();</span><br><span class="line">        <span class="type">int</span> <span class="variable">cl</span> <span class="operator">=</span> needle.length();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (cl &gt; sl) &#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">char</span> <span class="variable">first</span> <span class="operator">=</span> needle.charAt(<span class="number">0</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> sl-cl;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;= max; i++) &#123;</span><br><span class="line">            <span class="comment">/* 找到第一个相等的字符位置 */</span></span><br><span class="line">            <span class="keyword">if</span> (haystack.charAt(i) != first) &#123;</span><br><span class="line">                <span class="keyword">while</span> (++i &lt;= max &amp;&amp; haystack.charAt(i) != first);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">/* 查找剩下的*/</span></span><br><span class="line">            <span class="keyword">if</span> (i &lt;= max) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i + <span class="number">1</span>;</span><br><span class="line">                <span class="type">int</span> <span class="variable">end</span> <span class="operator">=</span> j+cl-<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span>  <span class="number">1</span>; j &lt; end &amp;&amp; haystack.charAt(j) == needle.charAt(k); j++, k++);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (j == end) &#123;</span><br><span class="line">                    <span class="comment">/* Found whole string. */</span></span><br><span class="line">                    <span class="keyword">return</span> i ;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
+<h2 id="4-思路"><a href="#4-思路" class="headerlink" title="4.思路"></a>4.思路</h2><p>鄙人的方法和<code>leetcode</code>官方题解的方法差不多，解法就有些许不同。</p>
+<ol>
+<li>首先通过遍历<code>haystack</code>与<code>needle</code>的第一个字符进行比较找出第一个相等的字母，找不到的话我直接返回<code>-1</code>，<code>leetcode</code>则做了预处理；</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">firstUniqChar</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="type">int</span> count[] = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="type">char</span>[] chars = s.toCharArray();</span><br><span class="line">        <span class="comment">//先统计每个字符出现的次数</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length(); i++)</span><br><span class="line">            count[chars[i] - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">        <span class="comment">//然后在遍历字符串s中的字符，如果出现次数是1就直接返回</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length(); i++)</span><br><span class="line">            <span class="keyword">if</span> (count[chars[i] - <span class="string">&#x27;a&#x27;</span>] == <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">作者：数据结构和算法</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xn5z8r/?discussion=6TyKA7">链接</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(len &gt; haystack.length())&#123;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> sl-cl;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;= max; i++) &#123;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>接下来就是匹配剩下的字母，匹配成功的话就返回开始索引，匹配不成功的话则继续进行下一次循环，设置外循环的原因是为了处理<code>实例三</code>这类情况——开头字母重复出现，需要依次遍历排除；</li>
+<li>匹配成功的条件都是第二个循环中的索引值是否增加了<code>needle</code>字符个长度，区别在于<code>leetcode</code>在循环外进行判断，而我在循环中进行判断，效率更低而且还要额外排除<code>needle</code>长度为<code>1</code>的情况，显得多此一举。 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(needle.length() == <span class="number">1</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
  
       <!-- reward -->
       
@@ -197,7 +201,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/08/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A04%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/08/26/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A05%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -210,19 +214,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2024/08/26/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A05%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            算法学习5（题解）
-          
-        </div>
-      </a>
     
-    
-      <a href="/2024/08/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A03%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-nav-link">
+      <a href="/2024/08/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A04%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">算法学习（题解）</div>
+        <div class="article-nav-title">算法学习4（题解）</div>
       </a>
     
   </nav>
