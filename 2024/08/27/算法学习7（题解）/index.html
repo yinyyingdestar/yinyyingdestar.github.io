@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>算法学习5（题解） |  添砖java</title>
+      <title>算法学习7（题解） |  添砖java</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/1715850294813.ico" />
@@ -54,7 +54,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-算法学习5（题解）"
+  id="post-算法学习7（题解）"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -65,7 +65,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  算法学习5（题解）
+  算法学习7（题解）
 </h1>
  
 
@@ -73,11 +73,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2024/08/26/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A05%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-date">
-  <time datetime="2024-08-26T01:00:01.000Z" itemprop="datePublished">2024-08-26</time>
+      <a href="/2024/08/27/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A07%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-date">
+  <time datetime="2024-08-27T06:59:01.000Z" itemprop="datePublished">2024-08-27</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AE%9E%E7%8E%B0-strStr/">实现 strStr()</a>
+    <a class="article-category-link" href="/categories/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/">最长公共前缀</a>
   </div>
   
 <div class="word_count">
@@ -85,7 +85,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">673</span>
+            <span class="post-count">628</span>
         </span>
     </span>
 
@@ -94,7 +94,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3 分钟</span>
+            <span class="post-count">2 分钟</span>
         </span>
     </span>
 </div>
@@ -110,27 +110,32 @@
     <div class="article-entry" itemprop="articleBody">
        
   <p>[toc] </p>
-<h1 id="算法学习-题解"><a href="#算法学习-题解" class="headerlink" title="算法学习(题解)"></a>算法学习(题解)</h1><h2 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h2><p>给你两个字符串<code>haystack</code>和<code>needle</code>，请你在<code>haystack</code>字符串中找出<code>needle</code>字符串的第一个匹配项的下标（下标从 0 开始）。如果<code>needle</code>不是<code>haystac</code>的一部分，则返回 <code>-1</code>。</p>
-<h2 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h2><p>实例1</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：haystack = &quot;sadbutsad&quot;, needle = &quot;sad&quot;</span><br><span class="line">输出：0</span><br><span class="line">解释：&quot;sad&quot; 在下标 0 和 6 处匹配。</span><br><span class="line">第一个匹配项的下标是 0 ，所以返回 0 。</span><br></pre></td></tr></table></figure>
-<p>实例二</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：haystack = &quot;leetcode&quot;, needle = &quot;leeto&quot;</span><br><span class="line">输出：-1</span><br><span class="line">解释：&quot;leeto&quot; 没有在 &quot;leetcode&quot; 中出现，所以返回 -1 。</span><br></pre></td></tr></table></figure>
-<p>实例三</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：haystack = &quot;imimmip&quot;, needle = &quot;immip&quot;</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
-<h2 id="3-代码"><a href="#3-代码" class="headerlink" title="3.代码"></a>3.代码</h2><p>鄙人的：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">strStr</span><span class="params">(String haystack, String needle)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">0</span>, temp = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; haystack.length();i++)&#123;</span><br><span class="line">        <span class="comment">/* 找到第一个相等的字符位置 */</span></span><br><span class="line">        <span class="keyword">if</span>(haystack.charAt(i) == needle.charAt(len))&#123;</span><br><span class="line">            len = i + needle.length();</span><br><span class="line">            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> i+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(len &gt; haystack.length())&#123;</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(needle.length() == <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">/* 查找剩下的*/</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; x &lt; len; x++, j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(haystack.charAt(x) != needle.charAt(j))&#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">/* Found whole string. */</span></span><br><span class="line">                <span class="keyword">if</span> (x == len-<span class="number">1</span>)&#123;</span><br><span class="line">                    <span class="keyword">return</span> a;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            len = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="算法学习7-题解"><a href="#算法学习7-题解" class="headerlink" title="算法学习7(题解)"></a>算法学习7(题解)</h1><h2 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h2><p>编写一个函数来查找字符串数组中的最长公共前缀。</p>
+<p>如果不存在公共前缀，返回空字符串<code>&quot;&quot;</code>。</p>
+<p><code>strs</code>中只有小写英文字母。</p>
+<h2 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h2><p>实例一</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：strs = [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]</span><br><span class="line">输出：&quot;fl&quot;</span><br></pre></td></tr></table></figure>
 
-<p>官方的：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">strStr</span><span class="params">(String haystack, String needle)</span> &#123;</span><br><span class="line">         <span class="type">int</span> <span class="variable">sl</span> <span class="operator">=</span> haystack.length();</span><br><span class="line">        <span class="type">int</span> <span class="variable">cl</span> <span class="operator">=</span> needle.length();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (cl &gt; sl) &#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">char</span> <span class="variable">first</span> <span class="operator">=</span> needle.charAt(<span class="number">0</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> sl-cl;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;= max; i++) &#123;</span><br><span class="line">            <span class="comment">/* 找到第一个相等的字符位置 */</span></span><br><span class="line">            <span class="keyword">if</span> (haystack.charAt(i) != first) &#123;</span><br><span class="line">                <span class="keyword">while</span> (++i &lt;= max &amp;&amp; haystack.charAt(i) != first);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">/* 查找剩下的*/</span></span><br><span class="line">            <span class="keyword">if</span> (i &lt;= max) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i + <span class="number">1</span>;</span><br><span class="line">                <span class="type">int</span> <span class="variable">end</span> <span class="operator">=</span> j+cl-<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span>  <span class="number">1</span>; j &lt; end &amp;&amp; haystack.charAt(j) == needle.charAt(k); j++, k++);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (j == end) &#123;</span><br><span class="line">                    <span class="comment">/* Found whole string. */</span></span><br><span class="line">                    <span class="keyword">return</span> i ;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
-<h2 id="4-思路"><a href="#4-思路" class="headerlink" title="4.思路"></a>4.思路</h2><p>鄙人的方法和<code>leetcode</code>官方题解的方法差不多，解法就有些许不同。</p>
+<p>实列二</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：strs = [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]</span><br><span class="line">输出：&quot;&quot;</span><br><span class="line">解释：输入不存在公共前缀。</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-代码"><a href="#3-代码" class="headerlink" title="3.代码"></a>3.代码</h2><p>鄙人的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">longestCommonPrefix</span><span class="params">(String[] strs)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">re</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>, temp = strs[<span class="number">0</span>];</span><br><span class="line">    <span class="comment">// 找出最小长度的的字符串</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; strs.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(temp.length() &gt; strs[i+<span class="number">1</span>].length())&#123;</span><br><span class="line">            temp = strs[i+<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 是否是共同前缀</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; temp.length();i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;j &lt; strs.length;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(temp.charAt(i) != strs[j].charAt(i))&#123;</span><br><span class="line">                <span class="keyword">return</span> re;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//迭代</span></span><br><span class="line">        re += temp.charAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> re;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnmav1/?discussion=RTNpup">大佬的</a>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">public</span> String <span class="title function_">longestCommonPrefix</span><span class="params">(String[] strs)</span> &#123;</span><br><span class="line">      <span class="comment">// 找出最小长度的的字符串</span></span><br><span class="line">      <span class="type">int</span> <span class="variable">minLen</span> <span class="operator">=</span> Integer.MAX_VALUE;</span><br><span class="line">      <span class="type">String</span> <span class="variable">minStr</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">      <span class="keyword">for</span> (String str : strs) &#123;</span><br><span class="line">          <span class="keyword">if</span> (minLen &gt; str.length()) &#123;</span><br><span class="line">              minLen = str.length();</span><br><span class="line">              minStr = str;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"><span class="comment">// 是否是共同前缀</span></span><br><span class="line">      <span class="keyword">for</span> (String str : strs) &#123;</span><br><span class="line">          <span class="keyword">while</span> (minLen &gt; <span class="number">0</span>) &#123;</span><br><span class="line">              <span class="comment">//不断缩小范围判断</span></span><br><span class="line">              <span class="type">boolean</span> <span class="variable">start</span> <span class="operator">=</span> str.startsWith(minStr.substring(<span class="number">0</span>, minLen));</span><br><span class="line">              <span class="keyword">if</span> (start) &#123;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">              &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                  minLen--;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> minStr.substring(<span class="number">0</span>, minLen);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  作者：Snorlax</span><br><span class="line">  来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-思路"><a href="#4-思路" class="headerlink" title="4.思路"></a>4.思路</h2><p>鄙人的用的双层<code>for</code>循环，效率比较低； 大佬虽然用的<code>for</code>内嵌<code>while</code>，但是由于条件设置地巧妙并且对<code>API</code>运用的十分恰当，要高效不少。</p>
 <ol>
-<li>首先通过遍历<code>haystack</code>与<code>needle</code>的第一个字符进行比较找出第一个相等的字母，找不到的话我直接返回<code>-1</code>，<code>leetcode</code>则做了预处理；</li>
+<li>首先，为了避免循环中索引<strong>越界</strong>，都需要先行找出<code>strs</code>中长度最小的字符串，一个简单的<code>for</code>循环即可搞定，增强<code>for</code>循环看起来更为简洁；</li>
+<li>接下来两种方法的对字符串判断方式不同，我是将最小的字符串的每一个字母依次与其它字符串相同位置的字母进行比较，用<code>re</code>不断迭代记录，直到出现不一样的；</li>
+<li>而第二种则是不断用截取最小长度字符串的<code>len</code>个长度的字符与数组中每一个元素的前缀进行比较，用<code>startsWith()</code>和<code>substring()</code>分别完成了<code>比较</code>和<code>截取</code>的任务.</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(len &gt; haystack.length())&#123;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> sl-cl;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;= max; i++) &#123;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>接下来就是匹配剩下的字母，匹配成功的话就返回开始索引，匹配不成功的话则继续进行下一次循环，设置外循环的原因是为了处理<code>实例三</code>这类情况——开头字母重复出现，需要依次遍历排除；</li>
-<li>匹配成功的条件都是第二个循环中的索引值是否增加了<code>needle</code>字符个长度，区别在于<code>leetcode</code>在循环外进行判断，而我在循环中进行判断，效率更低而且还要额外排除<code>needle</code>长度为<code>1</code>的情况，显得多此一举。 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(needle.length() == <span class="number">1</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (String str : strs) &#123;</span><br><span class="line">	<span class="keyword">while</span> (minLen &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    	<span class="comment">//不断缩小范围判断</span></span><br><span class="line">    	<span class="type">boolean</span> <span class="variable">start</span> <span class="operator">=</span> str.startsWith(minStr.substring(<span class="number">0</span>, minLen));</span><br><span class="line">    	<span class="keyword">if</span> (start) &#123;</span><br><span class="line">        	<span class="keyword">break</span>;</span><br><span class="line">    	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        	minLen--;</span><br><span class="line">    	&#125;</span><br><span class="line"> 	&#125;</span><br><span class="line"> 	<span class="comment">//返回minLen个长度的前缀</span></span><br><span class="line"> 	<span class="keyword">return</span> minStr.substring(<span class="number">0</span>, minLen);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>以上题目及实列代码均来自于：<a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnpvdm/">力扣（LeetCode）</a></p>
+</blockquote>
  
       <!-- reward -->
       
@@ -201,7 +206,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/08/26/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A05%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/08/27/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A07%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -214,19 +219,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2024/08/27/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A07%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            算法学习7（题解）
-          
-        </div>
-      </a>
     
-    
-      <a href="/2024/08/26/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A06%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-nav-link">
+      <a href="/2024/08/26/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A05%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">算法学习6（题解）</div>
+        <div class="article-nav-title">算法学习5（题解）</div>
       </a>
     
   </nav>

@@ -478,4 +478,42 @@
         <tag>算法学习(java)</tag>
       </tags>
   </entry>
+  <entry>
+    <title>算法学习7（题解）</title>
+    <url>/2024/08/27/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A07%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/</url>
+    <content><![CDATA[<p>[toc] </p>
+<h1 id="算法学习7-题解"><a href="#算法学习7-题解" class="headerlink" title="算法学习7(题解)"></a>算法学习7(题解)</h1><h2 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h2><p>编写一个函数来查找字符串数组中的最长公共前缀。</p>
+<p>如果不存在公共前缀，返回空字符串<code>&quot;&quot;</code>。</p>
+<p><code>strs</code>中只有小写英文字母。</p>
+<h2 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h2><p>实例一</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：strs = [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]</span><br><span class="line">输出：&quot;fl&quot;</span><br></pre></td></tr></table></figure>
+
+<p>实列二</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：strs = [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]</span><br><span class="line">输出：&quot;&quot;</span><br><span class="line">解释：输入不存在公共前缀。</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-代码"><a href="#3-代码" class="headerlink" title="3.代码"></a>3.代码</h2><p>鄙人的：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">longestCommonPrefix</span><span class="params">(String[] strs)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">re</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>, temp = strs[<span class="number">0</span>];</span><br><span class="line">    <span class="comment">// 找出最小长度的的字符串</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; strs.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(temp.length() &gt; strs[i+<span class="number">1</span>].length())&#123;</span><br><span class="line">            temp = strs[i+<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 是否是共同前缀</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; temp.length();i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;j &lt; strs.length;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(temp.charAt(i) != strs[j].charAt(i))&#123;</span><br><span class="line">                <span class="keyword">return</span> re;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//迭代</span></span><br><span class="line">        re += temp.charAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> re;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnmav1/?discussion=RTNpup">大佬的</a>：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  <span class="keyword">public</span> String <span class="title function_">longestCommonPrefix</span><span class="params">(String[] strs)</span> &#123;</span><br><span class="line">      <span class="comment">// 找出最小长度的的字符串</span></span><br><span class="line">      <span class="type">int</span> <span class="variable">minLen</span> <span class="operator">=</span> Integer.MAX_VALUE;</span><br><span class="line">      <span class="type">String</span> <span class="variable">minStr</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">      <span class="keyword">for</span> (String str : strs) &#123;</span><br><span class="line">          <span class="keyword">if</span> (minLen &gt; str.length()) &#123;</span><br><span class="line">              minLen = str.length();</span><br><span class="line">              minStr = str;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"><span class="comment">// 是否是共同前缀</span></span><br><span class="line">      <span class="keyword">for</span> (String str : strs) &#123;</span><br><span class="line">          <span class="keyword">while</span> (minLen &gt; <span class="number">0</span>) &#123;</span><br><span class="line">              <span class="comment">//不断缩小范围判断</span></span><br><span class="line">              <span class="type">boolean</span> <span class="variable">start</span> <span class="operator">=</span> str.startsWith(minStr.substring(<span class="number">0</span>, minLen));</span><br><span class="line">              <span class="keyword">if</span> (start) &#123;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">              &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                  minLen--;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> minStr.substring(<span class="number">0</span>, minLen);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  作者：Snorlax</span><br><span class="line">  来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-思路"><a href="#4-思路" class="headerlink" title="4.思路"></a>4.思路</h2><p>鄙人的用的双层<code>for</code>循环，效率比较低； 大佬虽然用的<code>for</code>内嵌<code>while</code>，但是由于条件设置地巧妙并且对<code>API</code>运用的十分恰当，要高效不少。</p>
+<ol>
+<li>首先，为了避免循环中索引<strong>越界</strong>，都需要先行找出<code>strs</code>中长度最小的字符串，一个简单的<code>for</code>循环即可搞定，增强<code>for</code>循环看起来更为简洁；</li>
+<li>接下来两种方法的对字符串判断方式不同，我是将最小的字符串的每一个字母依次与其它字符串相同位置的字母进行比较，用<code>re</code>不断迭代记录，直到出现不一样的；</li>
+<li>而第二种则是不断用截取最小长度字符串的<code>len</code>个长度的字符与数组中每一个元素的前缀进行比较，用<code>startsWith()</code>和<code>substring()</code>分别完成了<code>比较</code>和<code>截取</code>的任务.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (String str : strs) &#123;</span><br><span class="line">	<span class="keyword">while</span> (minLen &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    	<span class="comment">//不断缩小范围判断</span></span><br><span class="line">    	<span class="type">boolean</span> <span class="variable">start</span> <span class="operator">=</span> str.startsWith(minStr.substring(<span class="number">0</span>, minLen));</span><br><span class="line">    	<span class="keyword">if</span> (start) &#123;</span><br><span class="line">        	<span class="keyword">break</span>;</span><br><span class="line">    	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        	minLen--;</span><br><span class="line">    	&#125;</span><br><span class="line"> 	&#125;</span><br><span class="line"> 	<span class="comment">//返回minLen个长度的前缀</span></span><br><span class="line"> 	<span class="keyword">return</span> minStr.substring(<span class="number">0</span>, minLen);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>以上题目及实列代码均来自于：<a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnpvdm/">力扣（LeetCode）</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>最长公共前缀</category>
+      </categories>
+      <tags>
+        <tag>算法学习(java)</tag>
+      </tags>
+  </entry>
 </search>
