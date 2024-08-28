@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>算法学习7（题解） |  添砖java</title>
+      <title>算法学习8（题解） |  添砖java</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/1715850294813.ico" />
@@ -54,7 +54,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-算法学习7（题解）"
+  id="post-算法学习8（题解）"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -65,7 +65,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  算法学习7（题解）
+  算法学习8（题解）
 </h1>
  
 
@@ -73,11 +73,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2024/08/27/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A07%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-date">
-  <time datetime="2024-08-27T06:59:01.000Z" itemprop="datePublished">2024-08-27</time>
+      <a href="/2024/08/28/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A08%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-date">
+  <time datetime="2024-08-28T07:16:01.000Z" itemprop="datePublished">2024-08-28</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/">最长公共前缀</a>
+    <a class="article-category-link" href="/categories/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/">删除链表的倒数第N个节点</a>
   </div>
   
 <div class="word_count">
@@ -85,7 +85,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">628</span>
+            <span class="post-count">683</span>
         </span>
     </span>
 
@@ -110,28 +110,40 @@
     <div class="article-entry" itemprop="articleBody">
        
   <p>[toc] </p>
-<h1 id="算法学习7-题解"><a href="#算法学习7-题解" class="headerlink" title="算法学习7(题解)"></a>算法学习7(题解)</h1><h2 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h2><p>编写一个函数来查找字符串数组中的最长公共前缀。</p>
-<p>如果不存在公共前缀，返回空字符串<code>&quot;&quot;</code>。</p>
-<p><code>strs</code>中只有小写英文字母。</p>
+<h1 id="算法学习8-题解"><a href="#算法学习8-题解" class="headerlink" title="算法学习8(题解)"></a>算法学习8(题解)</h1><h2 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h2><p>给你一个链表，删除链表的倒数第<code>n</code>个结点，并且返回链表的头结点。</p>
+<blockquote>
+<ul>
+<li>注：删除节点并不是指从内存中删除它，而是让指定节点的值不应该存在于链表中。</li>
+</ul>
+</blockquote>
+<p><strong>进阶</strong>：你能尝试使用一趟扫描实现吗？</p>
 <h2 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h2><p>实例一</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：strs = [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]</span><br><span class="line">输出：&quot;fl&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1,2,3,4,5], n = 2</span><br><span class="line">输出：[1,2,3,5]</span><br></pre></td></tr></table></figure>
 
 <p>实列二</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：strs = [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]</span><br><span class="line">输出：&quot;&quot;</span><br><span class="line">解释：输入不存在公共前缀。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1], n = 1</span><br><span class="line">输出：[]</span><br></pre></td></tr></table></figure>
 
 <h2 id="3-代码"><a href="#3-代码" class="headerlink" title="3.代码"></a>3.代码</h2><p>鄙人的：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">longestCommonPrefix</span><span class="params">(String[] strs)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">re</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>, temp = strs[<span class="number">0</span>];</span><br><span class="line">    <span class="comment">// 找出最小长度的的字符串</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; strs.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(temp.length() &gt; strs[i+<span class="number">1</span>].length())&#123;</span><br><span class="line">            temp = strs[i+<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 是否是共同前缀</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; temp.length();i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;j &lt; strs.length;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(temp.charAt(i) != strs[j].charAt(i))&#123;</span><br><span class="line">                <span class="keyword">return</span> re;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//迭代</span></span><br><span class="line">        re += temp.charAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> re;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ListNode <span class="title function_">removeNthFromEnd</span><span class="params">(ListNode head, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="type">ListNode</span> <span class="variable">tempNode</span> <span class="operator">=</span> head;</span><br><span class="line">    <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//求链表的长度</span></span><br><span class="line">    <span class="keyword">while</span>(tempNode != <span class="literal">null</span>)&#123;</span><br><span class="line">        count++;</span><br><span class="line">        tempNode = tempNode.next;</span><br><span class="line">    &#125;</span><br><span class="line">    count -= n;</span><br><span class="line">    <span class="comment">// 说明删除的是头节点</span></span><br><span class="line">    <span class="keyword">if</span>(count == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> head.next;</span><br><span class="line">    &#125;</span><br><span class="line">    tempNode = head;</span><br><span class="line">     <span class="comment">//获取要删除链表的前一个结点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; count - <span class="number">1</span>;i++)&#123;</span><br><span class="line">        tempNode = tempNode.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//完成链表删除</span></span><br><span class="line">    tempNode.next = tempNode.next.next;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnmav1/?discussion=RTNpup">大佬的</a>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">public</span> String <span class="title function_">longestCommonPrefix</span><span class="params">(String[] strs)</span> &#123;</span><br><span class="line">      <span class="comment">// 找出最小长度的的字符串</span></span><br><span class="line">      <span class="type">int</span> <span class="variable">minLen</span> <span class="operator">=</span> Integer.MAX_VALUE;</span><br><span class="line">      <span class="type">String</span> <span class="variable">minStr</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">      <span class="keyword">for</span> (String str : strs) &#123;</span><br><span class="line">          <span class="keyword">if</span> (minLen &gt; str.length()) &#123;</span><br><span class="line">              minLen = str.length();</span><br><span class="line">              minStr = str;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"><span class="comment">// 是否是共同前缀</span></span><br><span class="line">      <span class="keyword">for</span> (String str : strs) &#123;</span><br><span class="line">          <span class="keyword">while</span> (minLen &gt; <span class="number">0</span>) &#123;</span><br><span class="line">              <span class="comment">//不断缩小范围判断</span></span><br><span class="line">              <span class="type">boolean</span> <span class="variable">start</span> <span class="operator">=</span> str.startsWith(minStr.substring(<span class="number">0</span>, minLen));</span><br><span class="line">              <span class="keyword">if</span> (start) &#123;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">              &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                  minLen--;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> minStr.substring(<span class="number">0</span>, minLen);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  作者：Snorlax</span><br><span class="line">  来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xn2925/?discussion=9Dqd9Q">大佬的</a>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">removeNthFromEnd</span><span class="params">(ListNode head, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">pos</span> <span class="operator">=</span> length(head, n);</span><br><span class="line">        <span class="comment">// 说明删除的是头节点</span></span><br><span class="line">        <span class="keyword">if</span> (pos == n)</span><br><span class="line">            <span class="keyword">return</span> head.next;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取节点所在位置，逆序</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">length</span><span class="params">(ListNode node, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (node == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">pos</span> <span class="operator">=</span> length(node.next, n) + <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//获取要删除链表的前一个结点，就可以完成链表的删除</span></span><br><span class="line">        <span class="keyword">if</span> (pos == n + <span class="number">1</span>)</span><br><span class="line">            node.next = node.next.next;</span><br><span class="line">        <span class="keyword">return</span> pos;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">作者：数据结构和算法</span><br><span class="line">来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
 
-<h2 id="4-思路"><a href="#4-思路" class="headerlink" title="4.思路"></a>4.思路</h2><p>鄙人的用的双层<code>for</code>循环，效率比较低； 大佬虽然用的<code>for</code>内嵌<code>while</code>，但是由于条件设置地巧妙并且对<code>API</code>运用的十分恰当，要高效不少。</p>
+<h2 id="4-思路"><a href="#4-思路" class="headerlink" title="4.思路"></a>4.思路</h2><p>鄙人的用的最容易想到的<code>for</code>循环； 大佬用的递归，也就是所谓的的一次扫描，叹服。</p>
 <ol>
-<li>首先，为了避免循环中索引<strong>越界</strong>，都需要先行找出<code>strs</code>中长度最小的字符串，一个简单的<code>for</code>循环即可搞定，增强<code>for</code>循环看起来更为简洁；</li>
-<li>接下来两种方法的对字符串判断方式不同，我是将最小的字符串的每一个字母依次与其它字符串相同位置的字母进行比较，用<code>re</code>不断迭代记录，直到出现不一样的；</li>
-<li>而第二种则是不断用截取最小长度字符串的<code>len</code>个长度的字符与数组中每一个元素的前缀进行比较，用<code>startsWith()</code>和<code>substring()</code>分别完成了<code>比较</code>和<code>截取</code>的任务.</li>
+<li>无论哪种方法，最先想到的都是获取链表的长度，可以用<code>for</code>也可以用<strong>递归</strong>;</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (String str : strs) &#123;</span><br><span class="line">	<span class="keyword">while</span> (minLen &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    	<span class="comment">//不断缩小范围判断</span></span><br><span class="line">    	<span class="type">boolean</span> <span class="variable">start</span> <span class="operator">=</span> str.startsWith(minStr.substring(<span class="number">0</span>, minLen));</span><br><span class="line">    	<span class="keyword">if</span> (start) &#123;</span><br><span class="line">        	<span class="keyword">break</span>;</span><br><span class="line">    	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        	minLen--;</span><br><span class="line">    	&#125;</span><br><span class="line"> 	&#125;</span><br><span class="line"> 	<span class="comment">//返回minLen个长度的前缀</span></span><br><span class="line"> 	<span class="keyword">return</span> minStr.substring(<span class="number">0</span>, minLen);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//求链表的长度</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> <span class="title function_">length</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">	<span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(tempNode != <span class="literal">null</span>)&#123;</span><br><span class="line">        count++;</span><br><span class="line">        tempNode = tempNode.next;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> <span class="title function_">length</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="literal">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> length(head.next) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>接着我就用<code>for</code>循环遍历找到目标节点的前一个位置，让它指向下下个节点即可，删除头节点没有了前置节点需要特殊处理，直接返回<code>head.next</code>作为链表的头节点，间接删除掉了头节点；</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tempNode.next = tempNode.next.next;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(count == <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> head.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>而用递归求链表长度时，因为递归是逆向求和，也就是从后往前计算，那么求倒数位置的节点可谓正中下怀，只需要在后面添加<code>if</code>判断进行计数的<code>pos</code>与<code>n</code>的关系即可进行删除。<br>至于如何处理删除首节点，因为<code>pos</code>不可能大于<code>n</code>，所以没有前置节点会被自动过滤，最后只需判断返回链表长度与<code>n</code>的关系即可删除首节点，妙哉。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (pos == n)</span><br><span class="line">    <span class="keyword">return</span> head.next;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>以上题目及实列代码均来自于：<a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnpvdm/">力扣（LeetCode）</a></p>
@@ -206,7 +218,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/08/27/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A07%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/08/28/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A08%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -219,19 +231,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2024/08/28/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A08%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            算法学习8（题解）
-          
-        </div>
-      </a>
     
-    
-      <a href="/2024/08/26/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A05%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-nav-link">
+      <a href="/2024/08/27/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A07%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">算法学习5（题解）</div>
+        <div class="article-nav-title">算法学习7（题解）</div>
       </a>
     
   </nav>
