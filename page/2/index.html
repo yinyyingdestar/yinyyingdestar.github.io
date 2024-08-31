@@ -166,6 +166,89 @@
     
     
     <article
+  id="post-IO流"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2024/07/12/IO%E6%B5%81/"
+    >javaIO流</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/07/12/IO%E6%B5%81/" class="article-date">
+  <time datetime="2024-07-12T01:10:01.000Z" itemprop="datePublished">2024-07-12</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java%E5%9F%BA%E7%A1%80/">java基础</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>[toc]</p>
+<h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><h2 id="基本理解"><a href="#基本理解" class="headerlink" title="基本理解"></a>基本理解</h2><p>流是程序操作文件的一种方式, java程序与文件间输入输出通过IO流控制</p>
+<h2 id="一览图"><a href="#一览图" class="headerlink" title="一览图"></a>一览图</h2><p><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/IO.png" alt="IO"></p>
+<h2 id="操作文件"><a href="#操作文件" class="headerlink" title="操作文件"></a>操作文件</h2><p>mkdir():创建一级目录<br>mkdirs():创建多级目录<br>delete():删除文件或目录</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E5%88%86%E7%B1%BB.png" alt="分类"><br>!!!切记关流</p>
+<h2 id="节点流和处理流"><a href="#节点流和处理流" class="headerlink" title="节点流和处理流"></a>节点流和处理流</h2><h3 id="一览图-1"><a href="#一览图-1" class="headerlink" title="一览图"></a>一览图</h3><p><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E4%B8%80%E8%A7%88%E5%9B%BE.png" alt="一览图"></p>
+<h3 id="节点流"><a href="#节点流" class="headerlink" title="节点流"></a>节点流</h3><ol>
+<li>为了提高效率, 通常用字节数组来进行操作</li>
+<li>(循环)read(byte&#x2F;byte[] b)读取文件, 读完返回-1; (循环)write(byte[] b, int off, int length)将数据写入文件<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> ((readLen = fileInputStream.read(buf)) != -<span class="number">1</span>) &#123;</span><br><span class="line">	System.out.print(<span class="keyword">new</span> <span class="title class_">String</span>(buf, <span class="number">0</span>, readLen));<span class="comment">//显示</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="处理流"><a href="#处理流" class="headerlink" title="处理流"></a>处理流</h3><p>概念: 为了进一步提高读写效率,诞生了处理流, 拥有更强大灵活的读写功能<br>设计模式: 通过对节点流进行包装,使用修饰器设计模式(多态的动态绑定机制), 因而节点流就成为了低级模式(类似于底层)</p>
+<h4 id="常用类"><a href="#常用类" class="headerlink" title="常用类"></a>常用类</h4><h5 id="BufferedReader-Writer"><a href="#BufferedReader-Writer" class="headerlink" title="BufferedReader&#x2F;Writer:"></a>BufferedReader&#x2F;Writer:</h5><p>(循环)readline()读取文件, 读完返回null; write()类似,newline()换行</p>
+<h5 id="对象流"><a href="#对象流" class="headerlink" title="对象流"></a>对象流</h5><p>ObjectOutputStream 序列化保存; ObjectInputStream 反序列化读取<br>注:<br><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.png" alt="注意事项"></p>
+<h5 id="转换流-InputStreamReader-Writer"><a href="#转换流-InputStreamReader-Writer" class="headerlink" title="转换流(InputStreamReader&#x2F;Writer)"></a>转换流(InputStreamReader&#x2F;Writer)</h5><ol>
+<li>可指定转换字符, 解决乱码</li>
+<li>可将字节流转换成字符流</li>
+</ol>
+<h5 id="打印流-PrintStream-PrintWriter"><a href="#打印流-PrintStream-PrintWriter" class="headerlink" title="打印流(PrintStream&#x2F;PrintWriter)"></a>打印流(PrintStream&#x2F;PrintWriter)</h5><ol>
+<li>只有输出流</li>
+<li>默认情况下打印位置是显示器, 可更改打印位置]<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//默认情况</span></span><br><span class="line"><span class="type">PrintStream</span> <span class="variable">out</span> <span class="operator">=</span> System.out;</span><br><span class="line">out.write(<span class="string">&quot;韩顺平,你好&quot;</span>.getBytes());</span><br><span class="line">out.close();</span><br><span class="line"><span class="comment">//改, 打印在e:\\f1.txt</span></span><br><span class="line">System.setOut(<span class="keyword">new</span> <span class="title class_">PrintStream</span>(<span class="string">&quot;e:\\f1.txt&quot;</span>));</span><br><span class="line">System.out.println(<span class="string">&quot;hello~&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h2><ol>
+<li>一种方便读取数据的类</li>
+<li>用键值形式储存</li>
+<li>循环读取:<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//读取 mysql.properties 文件，并得到 ip, user 和 pwd</span></span><br><span class="line"><span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;src\\mysql.properties&quot;</span>));</span><br><span class="line"><span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="keyword">while</span> ((line = br.readLine()) != <span class="literal">null</span>) &#123; <span class="comment">//循环读取</span></span><br><span class="line">	String[] split = line.split(<span class="string">&quot;=&quot;</span>);</span><br><span class="line">	<span class="comment">//如果我们要求指定的 ip 值</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="string">&quot;ip&quot;</span>.equals(split[<span class="number">0</span>])) &#123;</span><br><span class="line">	System.out.println(split[<span class="number">0</span>] + <span class="string">&quot;值是: &quot;</span> + split[<span class="number">1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">br.close();</span><br></pre></td></tr></table></figure></li>
+<li>指定读取<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1. 创建 Properties 对象</span></span><br><span class="line"><span class="type">Properties</span> <span class="variable">properties</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line"><span class="comment">//2. 加载指定配置文件</span></span><br><span class="line">properties.load(<span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;src\\mysql.properties&quot;</span>));</span><br><span class="line"><span class="comment">//3. 把 k-v 显示控制台</span></span><br><span class="line">properties.list(System.out);</span><br><span class="line"><span class="comment">//4. 根据 key 获取对应的值</span></span><br><span class="line"><span class="type">String</span> <span class="variable">user</span> <span class="operator">=</span> properties.getProperty(<span class="string">&quot;user&quot;</span>);<span class="comment">//getProperty返回string</span></span><br><span class="line"><span class="type">String</span> <span class="variable">user2</span> <span class="operator">=</span> properties.get(<span class="string">&quot;user&quot;</span>);<span class="comment">//get返回Object</span></span><br><span class="line">System.out.println(<span class="string">&quot;用户名=&quot;</span> + user);</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<blockquote>
+<p>本文截图均来自于<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1fh411y7R8/?spm_id_from=333.999.0.0&vd_source=3f176702ea98369f18fc10e9013aa770">【零基础 快速学Java】韩顺平 零基础30天学会Java</a></p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6java-%E5%9F%BA%E7%A1%80/" rel="tag">学java(基础)</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-java泛型"
   class="article article-type-post"
   itemscope
