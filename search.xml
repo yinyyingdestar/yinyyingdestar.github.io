@@ -716,4 +716,34 @@
         <tag>算法学习(java)</tag>
       </tags>
   </entry>
+  <entry>
+    <title>算法学习12（题解）</title>
+    <url>/2024/09/22/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A012%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/</url>
+    <content><![CDATA[<p>[toc] </p>
+<h1 id="算法学习12-题解"><a href="#算法学习12-题解" class="headerlink" title="算法学习12(题解)"></a>算法学习12(题解)</h1><blockquote>
+<p><strong>声明：本文为转载文章，仅用来学习交流，详情见文末</strong></p>
+</blockquote>
+<h2 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h2><p>给你一个二叉树的根节点<code>root</code>， 检查它是否轴对称。</p>
+<h2 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h2><p><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91.png" alt="对称二叉树"></p>
+<p>实例一</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：root = [1,2,2,3,4,4,3]</span><br><span class="line">输出：true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>实列二</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：root = [1,2,2,null,3,null,3]</span><br><span class="line">输出：false</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-思路"><a href="#3-思路" class="headerlink" title="3.思路"></a>3.思路</h2><h3 id="递归解决"><a href="#递归解决" class="headerlink" title="递归解决"></a>递归解决</h3><p>判断二叉树是否是对称，需要从子节点开始比较，两个子节点的值必须相同，并且左子节点的右子节点（如果有）必须等于右子节点的左子节点，左子节点的左子节点必须等于右子节点的右子节点，所以需要二叉树左右两部分通过中序遍历进行比较。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSymmetric</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">//从两个子节点开始判断</span></span><br><span class="line">    <span class="keyword">return</span> isSymmetricHelper(root.left, root.right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSymmetricHelper</span><span class="params">(TreeNode left, TreeNode right)</span> &#123;</span><br><span class="line">    <span class="comment">//如果左右子节点都为空，说明当前节点是叶子节点，返回true</span></span><br><span class="line">    <span class="keyword">if</span> (left == <span class="literal">null</span> &amp;&amp; right == <span class="literal">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">//如果当前节点只有一个子节点或者有两个子节点，但两个子节点的值不相同，直接返回false</span></span><br><span class="line">    <span class="keyword">if</span> (left == <span class="literal">null</span> || right == <span class="literal">null</span> || left.val != right.val)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="comment">//然后左子节点的左子节点和右子节点的右子节点比较，左子节点的右子节点和右子节点的左子节点比较</span></span><br><span class="line">    <span class="keyword">return</span> isSymmetricHelper(left.left, right.right) &amp;&amp; isSymmetricHelper(left.right, right.left);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>从根节点的左右节点同时开始遍历并对节点进行判断，从最外层到达树的底端，也就是当节点左右子节点都为<code>null</code>时到达叶节点，然后开始从后往前递归进行中序遍历。<br>该解法在入栈和出栈时都对数据进行了逻辑处理，所以不属于任何一种遍历方式， 入栈时相当于前序遍历，出栈是中序遍历。</p>
+<blockquote>
+<p>以上题目及实列均来自于：<a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnpvdm/">力扣（LeetCode）</a><br>代码摘录至作者：<a href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xn7ihv/?discussion=QMfbGu">数据结构和算法</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>对称二叉树</category>
+      </categories>
+      <tags>
+        <tag>算法学习(java)</tag>
+      </tags>
+  </entry>
 </search>
