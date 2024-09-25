@@ -746,4 +746,22 @@
         <tag>算法学习(java)</tag>
       </tags>
   </entry>
+  <entry>
+    <title>linux运行c++文件</title>
+    <url>/2024/09/25/linux%E8%BF%90%E8%A1%8Cc++%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<p>[toc] </p>
+<h1 id="cc1plus-fatal-error-opening-output-file-hello-i-不允许的操作compilation-terminated"><a href="#cc1plus-fatal-error-opening-output-file-hello-i-不允许的操作compilation-terminated" class="headerlink" title="cc1plus:fatal error: opening output file hello.i:不允许的操作compilation terminated"></a>cc1plus:fatal error: opening output file hello.i:不允许的操作compilation terminated</h1><h2 id="1-报错"><a href="#1-报错" class="headerlink" title="1.报错"></a>1.报错</h2><p>若果你是使用的虚拟机然后操作的挂载在Windows上的文件，在预编译.c&#x2F;.cpp文件时出现了这个错误，如图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E9%A2%84%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99.png" alt="预编译报错"></p>
+<p>那么就是操作权限的问题。</p>
+<h2 id="2-原因"><a href="#2-原因" class="headerlink" title="2.原因"></a>2.原因</h2><p>用<code>mount</code>检查文件的挂载状态，看到是<code>rw</code>可读写权限而不是<code>ro</code>只读<br><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E6%8C%82%E5%9C%A8%E7%8A%B6%E6%80%81.png" alt="挂在状态"><br>按理来说应该没问题啊，在我百思不得其解的时候我突然想到那只能是挂载端Windows对文件的操作进行了限制</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yinyyingdestar/myblog@main/img/%E6%93%8D%E4%BD%9C%E6%9D%83%E9%99%90.png" alt="操作权限"></p>
+<p>果然，没有完全控制文件的权限，勾上后点击<code>应用</code>保存即可，问题迎刃而解。</p>
+]]></content>
+      <categories>
+        <category>运行c++程序</category>
+      </categories>
+      <tags>
+        <tag>linux学习</tag>
+      </tags>
+  </entry>
 </search>

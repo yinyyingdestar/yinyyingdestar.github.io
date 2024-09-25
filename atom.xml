@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-09-22T05:05:02.208Z</updated>
+  <updated>2024-09-25T08:17:20.623Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux运行c++文件</title>
+    <link href="http://example.com/2024/09/25/linux%E8%BF%90%E8%A1%8Cc++%E6%96%87%E4%BB%B6/"/>
+    <id>http://example.com/2024/09/25/linux%E8%BF%90%E8%A1%8Cc++%E6%96%87%E4%BB%B6/</id>
+    <published>2024-09-25T08:01:01.000Z</published>
+    <updated>2024-09-25T08:17:20.623Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[toc] &lt;/p&gt;
+&lt;h1 id=&quot;cc1plus-fatal-error-opening-output-file-hello-i-不允许的操作compilation-terminated&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="运行c++程序" scheme="http://example.com/categories/%E8%BF%90%E8%A1%8Cc-%E7%A8%8B%E5%BA%8F/"/>
+    
+    
+    <category term="linux学习" scheme="http://example.com/tags/linux%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>算法学习12（题解）</title>
