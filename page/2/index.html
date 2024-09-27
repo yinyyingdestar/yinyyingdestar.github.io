@@ -166,6 +166,85 @@
     
     
     <article
+  id="post-算法学习6（题解）"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2024/08/26/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A06%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/"
+    >算法学习6（题解）</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/08/26/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A06%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-date">
+  <time datetime="2024-08-26T01:00:01.000Z" itemprop="datePublished">2024-08-26</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%96%E8%A7%82%E6%95%B0%E5%88%97/">外观数列</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>[toc] </p>
+<h1 id="算法学习6-题解"><a href="#算法学习6-题解" class="headerlink" title="算法学习6(题解)"></a>算法学习6(题解)</h1><h2 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h2><p>「外观数列」是一个数位字符串序列，由递归公式定义：</p>
+<ul>
+<li>countAndSay(1) &#x3D; “1”</li>
+<li>countAndSay(n) 是 countAndSay(n-1) 的行程长度编码。</li>
+</ul>
+<p><code>行程长度编码（RLE）</code>是一种字符串压缩方法，其工作原理是通过将连续相同字符（重复两次或更多次）替换为字符重复次数（运行长度）和字符的串联。例如，要压缩字符串<code>&quot;3322251&quot;</code>，我们将<code>&quot;33&quot;</code>用<code>&quot;23&quot;</code>替换，将<code>&quot;222&quot;</code>用<code>&quot;32&quot;</code>替换，将<code>&quot;5&quot;</code>用<code>&quot;15&quot;</code>替换并将<code>&quot;1&quot;</code>用<code>&quot;11&quot;</code>替换。因此压缩后字符串变为<code>&quot;23321511&quot;</code>。</p>
+<p>给定一个整数<code>n</code> ，返回 外观数列的第<code>n</code>个元素（1 &lt;&#x3D; n &lt;&#x3D; 30）。</p>
+<h2 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h2><p>实例一</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 4</span><br><span class="line">输出：&quot;1211&quot;</span><br><span class="line">解释：</span><br><span class="line">countAndSay(1) = &quot;1&quot;</span><br><span class="line">countAndSay(2) = &quot;1&quot; 的行程长度编码 = &quot;11&quot;</span><br><span class="line">countAndSay(3) = &quot;11&quot; 的行程长度编码 = &quot;21&quot;</span><br><span class="line">countAndSay(4) = &quot;21&quot; 的行程长度编码 = &quot;1211&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-代码"><a href="#3-代码" class="headerlink" title="3.代码"></a>3.代码</h2><p>鄙人的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Practice10</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">countAndSay</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">a</span> <span class="operator">=</span> <span class="string">&quot;1&quot;</span>, temp = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;i &lt; n;i++)&#123;</span><br><span class="line">        <span class="comment">//人为掠过此种情况</span></span><br><span class="line">            <span class="keyword">if</span>(i == <span class="number">1</span>)&#123;</span><br><span class="line">                a = <span class="string">&quot;11&quot;</span>;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 对s1遍历处理获取值</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;j &lt; a.length()-<span class="number">1</span>;j++)&#123;</span><br><span class="line">            <span class="comment">// 设定计数器 计算同一个数字出现的次数 count</span></span><br><span class="line">                <span class="keyword">if</span>(a.charAt(j) == a.charAt(j+<span class="number">1</span>))&#123;</span><br><span class="line">                    count++;</span><br><span class="line">                    <span class="comment">//末位数字处理</span></span><br><span class="line">                    <span class="keyword">if</span>(j == a.length()-<span class="number">2</span>)&#123;</span><br><span class="line">                        temp += count+<span class="string">&quot;&quot;</span>+a.charAt(j);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                	<span class="comment">// 不符合，记录下</span></span><br><span class="line">                    temp += count+<span class="string">&quot;&quot;</span>+a.charAt(j);</span><br><span class="line">                    count = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//末位数字处理</span></span><br><span class="line">                <span class="keyword">if</span>(j == a.length()-<span class="number">2</span>)&#123;</span><br><span class="line">                    temp += <span class="number">1</span>+<span class="string">&quot;&quot;</span>+a.charAt(j+<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//归零</span></span><br><span class="line">            a = temp;</span><br><span class="line">            temp = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            count = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnpvdm/?discussion=6HeAwg">大佬的</a>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> String <span class="title function_">countAndSay</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="comment">// 递归出口</span></span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;1&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 假设我们获得上一次的结果为 s1 = 112213</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> countAndSay(n - <span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 定义结果</span></span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">result</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="comment">// 对s1遍历处理获取值</span></span><br><span class="line">        <span class="type">char</span> <span class="variable">local</span> <span class="operator">=</span> s1.charAt(<span class="number">0</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s1.length(); i++) &#123;</span><br><span class="line">            <span class="comment">// 设定计数器 计算同一个数字出现的次数 count</span></span><br><span class="line">            <span class="keyword">if</span>(s1.charAt(i) == local)&#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 不符合，记录下</span></span><br><span class="line">                result.append(count);</span><br><span class="line">                result.append(local);</span><br><span class="line">                count = <span class="number">1</span>;</span><br><span class="line">                local = s1.charAt(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        result.append(count);</span><br><span class="line">        result.append(local);</span><br><span class="line">        <span class="keyword">return</span> result.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">作者：桂继宏</span><br><span class="line">来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-思路"><a href="#4-思路" class="headerlink" title="4.思路"></a>4.思路</h2><p>鄙人的用的迭代，代码十分臃肿； 大佬用的递归——相当于代替了迭代的外层循环，也避免的很多特殊情况。</p>
+<ol>
+<li>两种方法都是通过<code>count</code>计数，直到遇到不同的数字就进行记录，区别在于我是对<code>n</code>中两两挨着的数字进行比较，所以就出现了数组索引越界的问题：在<code>对s1遍历处理获取值</code>之前，小于两位的数字需要额外手动处理、在<code>对s1遍历处理获取值</code>中末位数字也需要分开处理；</li>
+<li>而另一种方法通过依次遍历比较则很好的避免了这些问题，在处理末位数字时也只需要在循环结束后再进行一次赋值；</li>
+<li>赋值时我用的字符串加减，而第二种用<code>api</code>，区别不大。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> <span class="variable">local</span> <span class="operator">=</span> s1.charAt(<span class="number">0</span>);</span><br><span class="line"><span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="comment">// 对s1遍历处理获取值</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s1.length(); i++) &#123;</span><br><span class="line"><span class="keyword">if</span>(s1.charAt(i) == local)&#123;</span><br><span class="line">    count++;</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="comment">//result.append(count);</span></span><br><span class="line">    <span class="comment">//result.append(local);</span></span><br><span class="line">    count = <span class="number">1</span>;</span><br><span class="line">    local = s1.charAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上题目及实列代码均来自于：<a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnpvdm/">力扣（LeetCode）</a></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0-java/" rel="tag">算法学习(java)</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-算法学习4（题解）"
   class="article article-type-post"
   itemscope

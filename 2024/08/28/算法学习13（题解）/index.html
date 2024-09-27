@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>算法学习8（题解） |  添砖java</title>
+      <title>算法学习13（题解） |  添砖java</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/1715850294813.ico" />
@@ -54,7 +54,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-算法学习8（题解）"
+  id="post-算法学习13（题解）"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -65,7 +65,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  算法学习8（题解）
+  算法学习13（题解）
 </h1>
  
 
@@ -73,11 +73,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2024/08/28/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A08%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-date">
-  <time datetime="2024-08-28T07:16:01.000Z" itemprop="datePublished">2024-08-28</time>
+      <a href="/2024/08/28/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A013%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-date">
+  <time datetime="2024-08-28T12:31:01.000Z" itemprop="datePublished">2024-08-28</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/">删除链表的倒数第N个节点</a>
+    <a class="article-category-link" href="/categories/%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%94%99%E8%AF%AF%E7%9A%84%E7%89%88%E6%9C%AC/">第一个错误的版本</a>
   </div>
   
 <div class="word_count">
@@ -85,7 +85,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">683</span>
+            <span class="post-count">665</span>
         </span>
     </span>
 
@@ -110,40 +110,34 @@
     <div class="article-entry" itemprop="articleBody">
        
   <p>[toc] </p>
-<h1 id="算法学习8-题解"><a href="#算法学习8-题解" class="headerlink" title="算法学习8(题解)"></a>算法学习8(题解)</h1><h2 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h2><p>给你一个链表，删除链表的倒数第<code>n</code>个结点，并且返回链表的头结点。</p>
-<blockquote>
-<ul>
-<li>注：删除节点并不是指从内存中删除它，而是让指定节点的值不应该存在于链表中。</li>
-</ul>
-</blockquote>
-<p><strong>进阶</strong>：你能尝试使用一趟扫描实现吗？</p>
+<h1 id="算法学习13-题解"><a href="#算法学习13-题解" class="headerlink" title="算法学习13(题解)"></a>算法学习13(题解)</h1><h2 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h2><p>你是产品经理，目前正在带领一个团队开发新的产品。不幸的是，你的产品的最新版本没有通过质量检测。由于每个版本都是基于之前的版本开发的，所以错误的版本之后的所有版本都是错的。</p>
+<p>假设你有<code>n</code>个版本<code>[1, 2, ..., n]</code>，你想找出导致之后所有版本出错的第一个错误的版本。</p>
+<p>你可以通过调用<code>bool isBadVersion(version)</code>接口来判断版本号<code>version</code>是否在单元测试中出错。实现一个函数来查找第一个错误的版本。你应该尽量减少对调用<code>API</code>的次数。</p>
 <h2 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h2><p>实例一</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1,2,3,4,5], n = 2</span><br><span class="line">输出：[1,2,3,5]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 5, bad = 4</span><br><span class="line">输出：4</span><br><span class="line">解释：</span><br><span class="line">调用 isBadVersion(3) -&gt; false </span><br><span class="line">调用 isBadVersion(5) -&gt; true </span><br><span class="line">调用 isBadVersion(4) -&gt; true</span><br><span class="line">所以，4 是第一个错误的版本。</span><br></pre></td></tr></table></figure>
 
 <p>实列二</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1], n = 1</span><br><span class="line">输出：[]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 1, bad = 1</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
 
 <h2 id="3-代码"><a href="#3-代码" class="headerlink" title="3.代码"></a>3.代码</h2><p>鄙人的：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ListNode <span class="title function_">removeNthFromEnd</span><span class="params">(ListNode head, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="type">ListNode</span> <span class="variable">tempNode</span> <span class="operator">=</span> head;</span><br><span class="line">    <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//求链表的长度</span></span><br><span class="line">    <span class="keyword">while</span>(tempNode != <span class="literal">null</span>)&#123;</span><br><span class="line">        count++;</span><br><span class="line">        tempNode = tempNode.next;</span><br><span class="line">    &#125;</span><br><span class="line">    count -= n;</span><br><span class="line">    <span class="comment">// 说明删除的是头节点</span></span><br><span class="line">    <span class="keyword">if</span>(count == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> head.next;</span><br><span class="line">    &#125;</span><br><span class="line">    tempNode = head;</span><br><span class="line">     <span class="comment">//获取要删除链表的前一个结点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; count - <span class="number">1</span>;i++)&#123;</span><br><span class="line">        tempNode = tempNode.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//完成链表删除</span></span><br><span class="line">    tempNode.next = tempNode.next.next;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">firstBadVersion</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> badVersion(<span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">badVersion</span><span class="params">(<span class="type">int</span> left, <span class="type">int</span> right)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(right == left+<span class="number">1</span> )&#123;</span><br><span class="line">        <span class="keyword">return</span> isBadVersion(left) ? left : left + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> <span class="variable">cen</span> <span class="operator">=</span> left+(right-left)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(isBadVersion(cen))&#123;</span><br><span class="line">        <span class="keyword">return</span> badVersion(left, cen);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> badVersion(cen, right);</span><br><span class="line">    &#125;        </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xn2925/?discussion=9Dqd9Q">大佬的</a>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">removeNthFromEnd</span><span class="params">(ListNode head, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">pos</span> <span class="operator">=</span> length(head, n);</span><br><span class="line">        <span class="comment">// 说明删除的是头节点</span></span><br><span class="line">        <span class="keyword">if</span> (pos == n)</span><br><span class="line">            <span class="keyword">return</span> head.next;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取节点所在位置，逆序</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">length</span><span class="params">(ListNode node, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (node == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">pos</span> <span class="operator">=</span> length(node.next, n) + <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//获取要删除链表的前一个结点，就可以完成链表的删除</span></span><br><span class="line">        <span class="keyword">if</span> (pos == n + <span class="number">1</span>)</span><br><span class="line">            node.next = node.next.next;</span><br><span class="line">        <span class="keyword">return</span> pos;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">作者：数据结构和算法</span><br><span class="line">来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnto1s/?discussion=BlbRl8">大佬的</a>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">firstBadVersion</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> <span class="number">1</span>, end = n;<span class="comment">//start == left, end == right</span></span><br><span class="line">        <span class="keyword">while</span> (start &lt; end) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> start + (end - start) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (!isBadVersion(mid))</span><br><span class="line">                start = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                end = mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> start;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">作者：数据结构和算法</span><br><span class="line">来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
 
-<h2 id="4-思路"><a href="#4-思路" class="headerlink" title="4.思路"></a>4.思路</h2><p>鄙人的用的最容易想到的<code>for</code>循环； 大佬用的递归，也就是所谓的的一次扫描，叹服。</p>
+<h2 id="4-思路"><a href="#4-思路" class="headerlink" title="4.思路"></a>4.思路</h2><p>鄙人的用的递归，其实没有必要。</p>
 <ol>
-<li>无论哪种方法，最先想到的都是获取链表的长度，可以用<code>for</code>也可以用<strong>递归</strong>;</li>
+<li>题目说尽量减少对<code>isBadVersion</code>的使用来找出错误版本，那么很容易就想到使用二分法来快速定位，判断中值是否为<code>true</code>,是的话就取<code>left</code>到中值的左半段， 反之取右半段，因为没有对返回数做处理，所以没有必要使用递归。</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//求链表的长度</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> <span class="title function_">length</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">	<span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(tempNode != <span class="literal">null</span>)&#123;</span><br><span class="line">        count++;</span><br><span class="line">        tempNode = tempNode.next;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> <span class="title function_">length</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="literal">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> length(head.next) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//求链表的长度</span></span><br><span class="line"><span class="keyword">if</span>(isBadVersion(cen))&#123;</span><br><span class="line">    <span class="keyword">return</span> badVersion(left, cen);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> badVersion(cen, right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <ol start="2">
-<li>接着我就用<code>for</code>循环遍历找到目标节点的前一个位置，让它指向下下个节点即可，删除头节点没有了前置节点需要特殊处理，直接返回<code>head.next</code>作为链表的头节点，间接删除掉了头节点；</li>
+<li><p>算中值<code>cen</code>的时候不能直接用<code>(left+right)/2</code>，这样可能会导致数据溢出，所以用<code>left+(right-left)/2</code>取而代之；</p>
+</li>
+<li><p>找到错误版本的条件两种方法有所不同，我通过判断当<code>left</code>和<code>right</code>相差为一的时候的它们的正确情况得出错误版本，最后还要调用一次<code>isBadVersion</code>，而大佬让检测到版本错误不存在时<code>start</code>就加一，从而保证当其到达错误版本位置时<code>end</code>已经不大于<code>start</code>了，就达到了结束循环的条件。</p>
+</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tempNode.next = tempNode.next.next;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(count == <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> head.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>而用递归求链表长度时，因为递归是逆向求和，也就是从后往前计算，那么求倒数位置的节点可谓正中下怀，只需要在后面添加<code>if</code>判断进行计数的<code>pos</code>与<code>n</code>的关系即可进行删除。<br>至于如何处理删除首节点，因为<code>pos</code>不可能大于<code>n</code>，所以没有前置节点会被自动过滤，最后只需判断返回链表长度与<code>n</code>的关系即可删除首节点，妙哉。</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (pos == n)</span><br><span class="line">    <span class="keyword">return</span> head.next;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!isBadVersion(mid))</span><br><span class="line">    start = mid + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    end = mid;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>以上题目及实列代码均来自于：<a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnpvdm/">力扣（LeetCode）</a></p>
@@ -218,7 +212,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/08/28/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A08%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/08/28/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A013%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -231,19 +225,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2024/08/28/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A013%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-nav-link">
+      <a href="/2024/08/31/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A09%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            算法学习13（题解）
+            算法学习9（题解）
           
         </div>
       </a>
     
     
-      <a href="/2024/08/27/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A07%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-nav-link">
+      <a href="/2024/08/28/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A08%EF%BC%88%E9%A2%98%E8%A7%A3%EF%BC%89/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">算法学习7（题解）</div>
+        <div class="article-nav-title">算法学习8（题解）</div>
       </a>
     
   </nav>
